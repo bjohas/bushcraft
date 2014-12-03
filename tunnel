@@ -1,0 +1,25 @@
+#!/bin/sh
+set -o nounset
+
+. ./bushcraft-init
+
+# configurable in tunnel.config
+REMOTE_HOST=""
+REMOTE_PORT=22
+LISTEN_PORT=""
+LOGIN_USER="tunnel"
+
+CONFIG=$CONFIG_PATH/tunnel.config
+
+if ! [ -f $CONFIG ] ; then
+    print "not configuration found at $CONFIG_PATH/tunnel.config"
+    exit 1 
+fi
+
+. "$CONFIG"
+
+logger -s "$0 started for $LOGIN_USER@$REMOTE_HOST:$REMOTE_PORT listening on $LISTEN_PORT"
+
+ssh -N -R $LISTEN_PORT:127.0.0.1:22 -l$LOGIN_USER $REMOTE_HOST -p$REMOTE_PORT
+
+logger -s "$0 exited with status $?"

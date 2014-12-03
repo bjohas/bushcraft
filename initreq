@@ -1,2 +1,2 @@
-sudo apt-get -y install openssh_server tightvncserver openvpn tmux curl wget
+sudo apt-get -y install openssh_server tightvncserver openvpn tmux curl wget ytalk
 

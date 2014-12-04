@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 # http://elinux.org/RPI_vcgencmd_usage
+# https://major.io/icanhazip-com-faq/
 if (-e "/boot") {
     if (!-e "/boot/logs") {
 	mkdir("/boot/logs");

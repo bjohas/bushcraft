@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+if (-e "/boot") {
+    if (!-e "/boot/logs") {
+	mkdir("/boot/logs");
+    };
+    system "cat /proc/cpuinfo > /boot/logs/cpuinfo.txt";
+    system "ifconfig > /boot/logs/ifconfig.txt";
+    system "wget -q -O /boot/logs/external_ip.txt http://icanhazip.com/";
+    system "cat /etc/hostname > /boot/logs/hostname.txt";
+    system "vcgencmd version > $logs/vcgencmd.version.txt";
+    system "vcgencmd measure_temp > $logs/vcgencmd.measure_temp.txt";
+    system "vcgencmd measure_volts core > $logs/vcgencmd.measure_volts.core.txt";
+};

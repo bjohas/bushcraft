@@ -1,2 +1,2 @@
-sudo apt-get -y install openssh_server tightvncserver openvpn tmux curl wget ytalk screen minicom emacs
+sudo apt-get -y install openssh_server tightvncserver openvpn tmux curl wget ytalk screen minicom emacs apt-zip apt-offline
 

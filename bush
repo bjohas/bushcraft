@@ -1,0 +1,4 @@
+#!/usr/bin/perl
+# This file is retrieved from tiny.cc/bush, to start the process.
+wget https://github.com/bjohas/bushcraft/archive/master.zip
+git clone https://github.com/bjohas/bushcraft.git

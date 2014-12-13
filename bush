@@ -1,4 +1,20 @@
 #!/usr/bin/perl
 # This file is retrieved from tiny.cc/bush, to start the process.
-wget https://github.com/bjohas/bushcraft/archive/master.zip
-git clone https://github.com/bjohas/bushcraft.git
+if (!-e "bushcraft") {
+  print "Trying to install bushcraft using git / wget / curl ...\n";
+  system "git clone https://github.com/bjohas/bushcraft.git";
+  if (!-e "bushcraft") {
+    system "wget https://github.com/bjohas/bushcraft/archive/master.zip; unzip master.zip";
+  };  
+  if (!-e "bushcraft") {
+    system "curl https://github.com/bjohas/bushcraft/archive/master.zip; unzip master.zip";
+  };
+  if (!-e "bushcraft") {
+    print "bushcraft failed to install... Try to get this file https://github.com/bjohas/bushcraft/archive/master.zip in a different way...";
+  } else {
+    system "sh bushcraft/initreq";
+    print "bushcraft installation finished.\n";
+  };
+} else {
+  system "cd bushcraft; git pull";
+};

@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+$destination = $ARGV[0];
+$port = $ARGV[1];
+$port = 22 if $port eq "";
+if ($destination ne "") {
+  print "Type password for $destination when prompted!\n";
+  system "cat .ssh/id_rsa.pub | ssh -p $port $destination 'mkdir .ssh; cat >> .ssh/authorized_keys' ";
+} else {
+
+print "
+$0 user\@server [port]
+
+to set up passwordless login from your current computer to remote computer
+
+";
+
+};

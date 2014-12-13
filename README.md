@@ -7,12 +7,12 @@ The files in the config directory need to be updated to your requirements.
 
 You install bushcraft by retrieving http://tiny.cc/bush, e.g.
 
-    wget http://tiny.cc/bush
+    wget tiny.cc/bush
 or
 
-    curl http://tiny.cc/bush
+    curl tiny.cc/bush
 
-and then running:
+(omitted http:// in order to type as little as possible). and then running:
 
     perl bush
     

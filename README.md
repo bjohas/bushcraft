@@ -9,6 +9,7 @@ You install bushcraft by retrieving http://tiny.cc/bush, e.g.
 
     wget http://tiny.cc/bush
 or
+
     curl http://tiny.cc/bush
 
 and then running:

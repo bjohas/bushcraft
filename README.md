@@ -12,7 +12,7 @@ or
 
     curl tiny.cc/bush
 
-(omitted http:// in order to type as little as possible). and then running:
+(omitted http:// in order to type as little as possible) and then running:
 
     perl bush
     

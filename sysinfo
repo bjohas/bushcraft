@@ -5,16 +5,16 @@
 
 if (-e "/boot/bootcode.bin") {
     if (!-e "/boot/logs") {
-	mkdir("/boot/logs");
+	system("sudo mkdir /boot/logs");
     };
     $logs = "/boot/logs";
-    system "cat /proc/cpuinfo > $logs/cpuinfo.txt";
-    system "ifconfig > $logs/ifconfig.txt";
-    system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
-    system "cat /etc/hostname > $logs/hostname.txt";
-    system "vcgencmd version > $logs/vcgencmd.version.txt";
-    system "vcgencmd measure_temp > $logs/vcgencmd.measure_temp.txt";
-    system "vcgencmd measure_volts core > $logs/vcgencmd.measure_volts.core.txt";
+    system "sudo cat /proc/cpuinfo > $logs/cpuinfo.txt";
+    system "sudo ifconfig > $logs/ifconfig.txt";
+    system "sudo wget -q -O $logs/external_ip.txt http://icanhazip.com/";
+    system "sudo cat /etc/hostname > $logs/hostname.txt";
+    system "sudo vcgencmd version > $logs/vcgencmd.version.txt";
+    system "sudo vcgencmd measure_temp > $logs/vcgencmd.measure_temp.txt";
+    system "sudo vcgencmd measure_volts core > $logs/vcgencmd.measure_volts.core.txt";
 } else {
     print "
 This script is meant for running on Raspberry Pi only.

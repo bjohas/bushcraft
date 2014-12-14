@@ -1,0 +1,15 @@
+#!/bin/sh
+
+/usr/sbin/dnsmasq \
+	--no-hosts \
+	--in-foreground \
+	--interfaces=eth0 \
+	--except-interface=lo \
+	--clear-on-reload \
+	--strict-order \
+	--listen-address=10.42.0.1 \
+	--dhcp-range=10.42.0.10,10.42.0.100,60m \
+	--dhcp-option=option:router,10.42.0.1 \
+	--dhcp-lease-max=50 \
+	--pid-file=/var/run/nm-dnsmasq-eth0.pid
+

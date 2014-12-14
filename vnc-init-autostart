@@ -5,7 +5,8 @@ if (!-e "/boot/bootcode.bin") {
    print "Exit.\n";
    exit;
 };
-system "cd; mkdir .config; mkdir .config/autostart;";
+chdir();
+system "cd; mkdir .config; mkdir .config/autostart;" if !-d ".config/autorstart";
 open F,">.config/autostart/tightvnc.desktop";
 print F "[Desktop Entry]
 Type=Application

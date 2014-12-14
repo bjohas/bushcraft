@@ -12,8 +12,12 @@ if (!-e "bushcraft") {
   if (!-e "bushcraft") {
     print "bushcraft failed to install... Try to get this file https://github.com/bjohas/bushcraft/archive/master.zip in a different way...";
   } else {
-    system "sh bushcraft/initreq";
     print "bushcraft installation finished.\n";
+    print "Now type:
+
+sh bushcraft/initreq
+
+to install further required programs.";
   };
 } else {
   system "cd bushcraft; git pull";

@@ -5,14 +5,17 @@ $port = $ARGV[1];
 $port = 22 if $port eq "";
 if ($destination ne "") {
   print "Type password for $destination when prompted!\n";
+  if (!-e ".ssh/id_rsa.pub") {
+      system "ssh-keygen -t rsa";
+  };
   system "cat .ssh/id_rsa.pub | ssh -p $port $destination 'mkdir .ssh; cat >> .ssh/authorized_keys' ";
 } else {
 
-print "
+    print "
 $0 user\@server [port]
 
 to set up passwordless login from your current computer to remote computer
 
 ";
-
+      
 };

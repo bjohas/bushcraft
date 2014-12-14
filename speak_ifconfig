@@ -3,15 +3,22 @@
 @a = split /\n/,`ifconfig`;
 foreach (@a) {
     if (m/^(\S+)\:?\s/) {
-	$b .= "Interface $1 .  ";
+	$b = "Interface $1 .  ";
+	$bb .= $b;
+	&speak($b);
     };
     if (m/^\s+inet addr\:(\d+\.\d+\.\d+\.\d+)/) {
 	$str = $1;
 	$str =~ s/(\d)/$1 /sg;
 	$str =~ s/\./ dot.  /g;
-	$b .= $str . ".  ";;
+	$bb .= $str . ".  ";
+	&speak($str);
     };
 };
-open F,"| festival --tts";
-print F $b;
-close F;
+
+sub speak() {
+    open F,"| festival --tts";
+    print F $_[0];
+    close F;
+    sleep 1;
+};

@@ -5,7 +5,7 @@
 
 if (-e "/boot/bootcode.bin") {
     if (!-e "/boot/logs") {
-	system("sudo mkdir /boot/logs; sudo chmod u+wx /boot/logs");
+	system("sudo mkdir /boot/logs; sudo chown pi /boot/logs;");
     };
     $logs = "/boot/logs";
     system "cat /proc/cpuinfo > $logs/cpuinfo.txt";

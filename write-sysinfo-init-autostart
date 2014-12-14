@@ -6,7 +6,7 @@ if (!-e "/boot/bootcode.bin") {
    exit;
 };
 chdir();
-system "cd; mkdir .config; mkdir .config/autostart;" if !-d ".config/autorstart";
+system "cd; mkdir .config; mkdir .config/autostart;" if !-d ".config/autostart";
 open F,">.config/autostart/sysinfo.desktop";
 print F "[Desktop Entry]
 Type=Application

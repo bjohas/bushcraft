@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+
+while (1==1) {
+     system "speak_ifconfig";
+     sleep 30;
+};

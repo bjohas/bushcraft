@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+@a = split /\n/,`ifconfig`;
+foreach (@a) {
+    if (m/^(\S+)\:?\s/) {
+	$b .= "Interface $1 .  ";
+    };
+    if (m/^\s+inet addr\:(\d+\.\d+\.\d+\.\d+)/) {
+	$str = $1;
+	$str =~ s/(\d)/$1 /sg;
+	$str =~ s/\./ dot.  /g;
+	$b .= $str . ".  ";;
+    };
+};
+open F,"| festival --tts";
+print F $b;
+close F;

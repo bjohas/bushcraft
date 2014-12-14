@@ -1,2 +1,7 @@
 #!/bin/sh
+echo "Starting serial connection with Raspberry Pi."
+echo "You first need to type your own (sudo) password."
+echo "You may then see a blank screen - try pressing enter."
+echo "You should then see 'Raspberrypi login', where you enter pi / raspberrypi"
+echo "To exit screen, type ctrl-a d."
 sudo screen /dev/ttyUSB0 115200

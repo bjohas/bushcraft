@@ -6,7 +6,7 @@ if (!-e "/boot/bootcode.bin") {
 };
 system "cd; mkdir .config; mkdir autostart;";
 open F,">.config/autostart/tightvnc.desktop";
-print F,"[Desktop Entry]
+print F "[Desktop Entry]
 Type=Application
 Name=TightVNC
 Exec=vncserver :1

@@ -15,9 +15,14 @@ if (!-e "bushcraft") {
     print "bushcraft installation finished.\n";
     print "Now type:
 
-sh bushcraft/initreq
+sh bushcraft/bushcraft-init-pi
 
-to install further required programs. You can also delete this file now:
+or
+
+sh bushcraft/bushcraft-init
+
+to initialise and install further required programs.
+You can also delete this file now:
 
 rm bush
 

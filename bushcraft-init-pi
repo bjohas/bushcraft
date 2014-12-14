@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+if (-e "/boot/bootcode.bin") {
+   chdir();
+   chdir("bushcraft");
+   system "
+email-init
+first-start-init-autostart
+initreq
+vnc-init-autostart
+vnc-init-password
+write-sysinfo-init-autostart
+";
+} else {
+    print "
+This script is meant for running on Raspberry Pi only.
+Exiting.
+";
+};
+
+

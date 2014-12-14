@@ -4,7 +4,7 @@ print "This programme is meant for running on Raspberry Pi";
 if (!-e "/boot/bootcode.bin") {
    print "Exit.\n";
 };
-system "cd; mkdir .config; mkdir autostart;";
+system "cd; mkdir .config; mkdir ./config/autostart;";
 open F,">.config/autostart/tightvnc.desktop";
 print F "[Desktop Entry]
 Type=Application

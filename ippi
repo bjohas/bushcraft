@@ -1,0 +1,18 @@
+#!/bin/sh
+
+DNSMASQ_LEASES=/var/lib/misc/dnsmasq.leases
+
+get_ip() {
+    tail -n1 "$DNSMASQ_LEASES" |
+    awk '{ print $3 }'
+}
+
+# raspberrypi mac addr b8:27:eb:**:**:**
+
+ip=`get_ip`
+
+if [ ! -z "$ip" ] ; then
+    echo "$ip"
+else
+    echo "No IP found in $DNSMASQ_LEASES"
+fi

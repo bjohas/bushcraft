@@ -17,7 +17,11 @@ if (!-e "bushcraft") {
 
 sh bushcraft/initreq
 
-to install further required programs.";
+to install further required programs. You can also delete this file now:
+
+rm bush
+
+";
   };
 } else {
   system "cd bushcraft; git pull";

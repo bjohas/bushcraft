@@ -4,12 +4,12 @@ if (-e "/boot/bootcode.bin") {
    chdir();
    chdir("bushcraft");
    system "
-email-init
-first-start-init-autostart
 initreq
+email-init
+write-sysinfo-init-autostart
+first-start-init-autostart
 vnc-init-autostart
 vnc-init-password
-write-sysinfo-init-autostart
 ";
 } else {
     print "

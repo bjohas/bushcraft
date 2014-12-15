@@ -21,8 +21,15 @@ or if you are on another linux computer, type
 
     sh bushcraft/bushcraft-init
 
-to initialise and install further required programs.
-You can also delete this file now:
+to initialise and install further required programs. 
+
+The files in the bushcraft/config directory 
+need to be updated to your requirements, or
+you can run
+
+   perl bushcraft/bushcraft-get-config <URL>
+   
+to fetch these. You can also delete this file now:
 
     rm bush
 

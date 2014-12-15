@@ -13,13 +13,18 @@ if (!-e "bushcraft") {
     print "bushcraft failed to install... Try to get this file https://github.com/bjohas/bushcraft/archive/master.zip in a different way...";
   } else {
     print "bushcraft installation finished.\n";
-    print "Now type:
+    print "If you are on Raspberry Pi, now type
 
-sh bushcraft/initreq
+    sh bushcraft/bushcraft-init-pi
 
-to install further required programs. You can also delete this file now:
+or if you are on another linux computer, type
 
-rm bush
+    sh bushcraft/bushcraft-init
+
+to initialise and install further required programs.
+You can also delete this file now:
+
+    rm bush
 
 ";
   };

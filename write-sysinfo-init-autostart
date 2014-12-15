@@ -7,11 +7,11 @@ if (!-e "/boot/bootcode.bin") {
 };
 chdir();
 system "cd; mkdir .config; mkdir .config/autostart;" if !-d ".config/autostart";
-open F,">.config/autostart/tightvnc.desktop";
+open F,">.config/autostart/sysinfo.desktop";
 print F "[Desktop Entry]
 Type=Application
-Name=TightVNC
-Exec=vncserver :1
+Name=sysinfo
+Exec=sudo bushcraft/sysinfo
 StartupNotify=false
 ";
 close F;

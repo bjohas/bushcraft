@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+($out = `ps eaxu | grep firststart | grep -v grep`) =~ s/\n//sg;
+if ($out ne "") {
+    print "firstart already running. Exit.\n";
+    exit;
+};
+
+while (1==1) {
+
+
+    ($who = `who`) =~ s/\n//;
+    if ($who eq "") {
+	system "speak_ifconfig";
+    };
+    sleep 10;
+};

@@ -1,0 +1,4 @@
+
+# Needs writing: Script that reads system setting from /boot/config/ such as
+# hostname, wifi login, whether to shutdown after start
+# and sets them.

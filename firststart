@@ -6,12 +6,47 @@ if ($ARGV[0] eq "off") {
    exit;
 };
 
+if ($ARGV[0] =~ m/^(\-h|\-\-help|help)/) {
+    print "
+
+This script is run automatically if the 'firststart-init-autorun' script has been executed. It does the following:
+
+(1) The script runs
+
+   readsystemsettings
+
+which configure things like hostname and internet settings.
+
+(2) It runs these scripts:
+
+   /boot/config/startscript.sh
+   /boot/config/startscript.pl
+
+(Note that .pl is only run of there is no .sh file.)
+
+(3) If /boot/config/speak_ifconfig.cfg exists, and is empty, or contains 'yes'
+then speak_ifconfig is run every 10 seconds. This is to help you log into the
+Pi for the first time: Simply connect a speaker or headset, and the Raspberry Pi 
+will tell you the IP address. Once you are logged in, the voice prompts automatically
+stop while you are logged in. To disable them anyway for this session, use
+
+    $0 off
+
+or to disable permanently use 
+
+    firststart-init-autorun off
+
+";
+    exit;
+};
+
 ($out = `ps eaxu | grep firststart | grep -v grep`) =~ s/\n//sg;
 if ($out ne "") {
     print "firstart already running. Exit.\n";
     exit;
 };
 system("~/bushcraft/readsystemsettings");
+$cfg = "/boot/config";
 if (-e "$cfg/startupscript.sh") {
     system("sh $cfg/startscript.sh &");
     exit;

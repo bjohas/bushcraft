@@ -5,12 +5,19 @@ if (-e "/boot/bootcode.bin") {
    chdir("bushcraft");
    system "
 initreq
-email-init
 write-sysinfo-init-autostart
 first-start-init-autostart
 vnc-init-autostart
 vnc-init-password
 ";
+print "
+If you want email to work, please enter gmail user / password
+in 
+      config/email.conf
+and then run
+      email-init
+";
+
 } else {
     print "
 This script is meant for running on Raspberry Pi only.

@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+if (-e "/boot/bootcode.bin") {
+   ($serial = `cat /proc/cpuinfo | grep Serial`) =~ s/Serial\s+\:\s+//;
+   $serial =~ s/\n//;
+   print $serial;
+} else {
+    print "
+This script is meant for running on Raspberry Pi only.
+Exiting.
+";
+};
+

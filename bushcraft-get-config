@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+
+$url = "$ARGV[0]";
+chdir();
+opendir(my $dh, "bushcraft/config") || die;
+while(readdir $dh) {
+    print "Updating $_\n";
+    system "wget -O bushcraft/config/$_ $url/$_";
+};
+closedir $dh;

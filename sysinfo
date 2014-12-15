@@ -12,7 +12,6 @@ if (-e "/boot/bootcode.bin") {
     system "ifconfig > $logs/ifconfig.txt";
     ($serial = `cat /proc/cpuinfo | grep Serial`) =~ s/Serial\s+\:\s+//;
     $serial =~ s/\n//;
-    print $serial;
     system "echo '$serial' > $logs/serial.txt";
     system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
     system "cat /etc/hostname > $logs/hostname.txt";

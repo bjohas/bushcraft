@@ -8,7 +8,10 @@ if (!-e "/boot/bootcode.bin") {
 if ($ARGV[0] eq "off") {
    system "rm .config/autostart/firststart.desktop";
    system "killall firststart";
-} else {
+   print "Stopped all instances of $0. Will not run again.\n";
+   exit;
+};
+
 chdir();
 system "cd; mkdir .config; mkdir .config/autostart;" if !-d ".config/autostart";
 open F,">.config/autostart/firststart.desktop";
@@ -19,4 +22,6 @@ Exec=firststart
 StartupNotify=false
 ";
 close F;
-};
+
+system("sudo mkdir /boot/config");
+system("sudo touch /boot/config/speak_ifconfig.cfg");

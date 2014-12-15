@@ -1,17 +1,34 @@
 #!/usr/bin/perl
 
+if ($ARGV[0] eq "off") {
+   system "killall firststart";
+   print "Stopped all instances of $0. Will start again at next boot.\n";
+   exit;
+};
+
 ($out = `ps eaxu | grep firststart | grep -v grep`) =~ s/\n//sg;
 if ($out ne "") {
     print "firstart already running. Exit.\n";
     exit;
 };
-
-while (1==1) {
-
-
-    ($who = `who`) =~ s/\n//;
-    if ($who eq "") {
-	system "speak_ifconfig";
+system("~/bushcraft/readsystemsettings");
+if (-e "$cfg/startupscript.sh") {
+    system("sh $cfg/startscript.sh &");
+    exit;
+};
+if (-e "$cfg/startupscript.pl") {
+    system("perl $cfg/startscript.pl &");
+    exit;
+};
+if (-e "$cfg/speak_ifconfig.cfg") {
+    ($switch = `cat $cfg/speak_ifconfig.cfg`) =~ s/\n//;
+    if ($switch eq "" || $switch eq "yes") {
+	while (1==1) {
+	    ($who = `who`) =~ s/\n//;
+	    if ($who eq "") {
+		system "speak_ifconfig";
+	    };
+	    sleep 10;
+	};
     };
-    sleep 10;
 };

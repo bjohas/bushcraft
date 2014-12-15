@@ -10,7 +10,10 @@ if (-e "/boot/bootcode.bin") {
     $logs = "/boot/logs";
     system "cat /proc/cpuinfo > $logs/cpuinfo.txt";
     system "ifconfig > $logs/ifconfig.txt";
-    system "piserial > $logs/serial.txt";
+    ($serial = `cat /proc/cpuinfo | grep Serial`) =~ s/Serial\s+\:\s+//;
+    $serial =~ s/\n//;
+    print $serial;
+    system "echo '$serial' > $logs/serial.txt";
     system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
     system "cat /etc/hostname > $logs/hostname.txt";
     system "vcgencmd version > $logs/vcgencmd.version.txt";

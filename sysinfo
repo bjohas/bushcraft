@@ -7,7 +7,7 @@ if (-e "/boot/bootcode.bin") {
 # needs to be run as sudo
     ($whoami = `whoami`) =~ s/\n//;
     if ($whoami ne "root") {
-	print "Running as root!";
+	print "Restarting as root!";
 	system "sudo $0";
 	exit;
     };
@@ -21,10 +21,16 @@ if (-e "/boot/bootcode.bin") {
     $serial =~ s/\n//;
     system "echo '$serial' > $logs/serial.txt";
     system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
-    system "cat /etc/hostname > $logs/hostname.txt";
+    system "hostname > $logs/hostname.txt";
+    system "hostname -I > $logs/hostname-I.txt";
     system "vcgencmd version > $logs/vcgencmd.version.txt";
     system "vcgencmd measure_temp > $logs/vcgencmd.measure_temp.txt";
     system "vcgencmd measure_volts core > $logs/vcgencmd.measure_volts.core.txt";
+    system "who > $logs/who.txt";
+    system "last > $logs/last.txt";
+    system "uptime > $logs/uptime.txt";
+    system "procinfo > $logs/procinfo.txt";
+    system "rm $logs/logs.tgz; tar zcvf $logs/logs.tgz $logs/*txt;"; 
 } else {
     print "
 This script is meant for running on Raspberry Pi only.

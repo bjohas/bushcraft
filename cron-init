@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+open F,">/tmp/crontmp";
+print F "*/10 * * * * /home/pi/bushcraft/cron_commands\n";
+close F;
+system "sudo crontab /tmp/crontmp; rm /tmp/crontmp";
+
+if ($ARGV[0] eq "off") {
+   open F,">/tmp/crontmp";
+   print F "\n";
+   close F;
+   system "sudo crontab /tmp/crontmp; rm /tmp/crontmp";
+};

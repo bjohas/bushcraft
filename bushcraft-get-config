@@ -1,10 +1,37 @@
 #!/usr/bin/perl
 
+if ($ARGV eq "-r" && -e "bushcraft/config/getconfig.cfg") {
+    open F,"bushcraft/config/getconfig.cfg";
+    while (<F>) {
+	$url = $_;
+    };
+    close F;
+};
+$url =~ s/\n//;
 $url = "$ARGV[0]";
+if ($url eq "") {
+    print "Usage:
+$0 <base url for config files>
+
+or
+
+$0 -r 
+
+to reuse.
+";
+    exit;
+};
 chdir();
+open F,">bushcraft/config/getconfig.cfg";
+print F $url;
+close F;
 opendir(my $dh, "bushcraft/config") || die;
 while(readdir $dh) {
-    print "Updating $_\n";
-    system "wget -O bushcraft/config/$_ $url/$_";
+    print "Fetching $_\n";
+    system "wget -O bushcraft/config/temp.txt $url/$_";
+    if (!-z "bushcraft/config/temp.txt") {
+	print "- Updating $_\n";
+	system("mv","bushcraft/config/temp.txt","bushcraft/config/$_");
+    };
 };
 closedir $dh;

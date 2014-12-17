@@ -2,7 +2,7 @@
 
 if (-e "/boot/bootcode.bin") {
    chdir();
-   chdir("bushcraft");
+   chdir("bushcraft/init");
    system "
 initreq
 write-sysinfo-init-autostart

@@ -15,11 +15,11 @@ if (!-e "bushcraft") {
     print "bushcraft installation finished.\n";
     print "If you are on Raspberry Pi, now type
 
-    sh bushcraft/bushcraft-init-pi
+    sh bushcraft/init/bushcraft-init-pi
 
 or if you are on another linux computer, type
 
-    sh bushcraft/bushcraft-init
+    sh bushcraft/init/bushcraft-init
 
 to initialise and install further required programs. 
 

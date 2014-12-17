@@ -1,3 +1,0 @@
-#!/bin/sh
-sudo apt-get -y install openssh-server tightvncserver openvpn tmux curl wget ytalk screen minicom emacs apt-zip apt-offline vncviewer festival espeak psacct procinfo
-

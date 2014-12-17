@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+print "This programme is meant for running on Raspberry Pi\n";
+if (!-e "/boot/bootcode.bin") {
+   print "Exit.\n";
+   exit;
+};
+if ($ARGV[0] eq "off") {
+   system "rm .config/autostart/firststart.desktop";
+   system "killall firststart";
+} else {
+chdir();
+system "cd; mkdir .config; mkdir .config/autostart;" if !-d ".config/autostart";
+open F,">.config/autostart/firststart.desktop";
+print F "[Desktop Entry]
+Type=Application
+Name=firststart
+Exec=firststart
+StartupNotify=false
+";
+close F;
+};

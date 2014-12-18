@@ -1,0 +1,69 @@
+#!/usr/bin/perl
+
+$conf = "$ENV{HOME}/.config/bushcraft/"
+
+if ($ARGV[0] eq "") {
+    print "Usage:
+$0 <base url for config files>
+
+or
+
+$0 -r 
+
+to reuse.
+";
+    exit;
+};
+
+if ($ARGV[0] ne "-m") {
+    if ($ARGV eq "-r") {
+	
+	if ( -e "$conf/getconfig.cfg") {
+	    open F,"$conf/getconfig.cfg";
+	    while (<F>) {
+		if (m/^base\=(.*)$/) {
+		    $url = $1;
+		};
+	    };
+	    close F;
+	} else {
+	    print "Sorry, config file not found\n";
+	    exit;
+	};
+	
+    } else {
+	
+	$url = $ARGG[0];
+	open F,">$conf/getconfig.cfg";
+	print F "base=$url\n";
+	close F;
+	
+    };
+    
+    $url =~ s/\n//;
+    
+    chdir();
+    opendir(my $dh, "$ENV{HOME}/bushcraft/config") || die;
+    while(readdir $dh) {
+	print "Fetching $_\n";
+	system "wget -O $conf/temp.txt $url/$_";
+	if (!-z "bushcraft/config/temp.txt") {
+	    print "- Updating $_\n";
+	    system("mv","$conf/temp.txt","$conf/$_");
+	};
+	system("rm","$conf/temp.txt");
+    };
+    closedir $dh;
+    
+} else {
+
+    chdir();
+    opendir(my $dh, "$ENV{HOME}/bushcraft/config") || die;
+    while(readdir $dh) {
+	print "Manual config: $_\n";
+# open the preset config file, and then let the user enter values.
+	print "Not implemented\n";
+    };
+    closedir $dh;
+
+};

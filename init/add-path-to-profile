@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+
+if ($ARGV[0] eq "") {
+open F,">>$ENV{HOME}/.profile";
+print F,"\nexport PATH=\"".
+"\$HOME/bushcraft/bin:".
+"\$HOME/bushcraft/bin_connect_to_headless_pi:".
+"\$PATH\"\n";
+close F;
+};
+if ($ARGV[0] eq "pi") {
+open F,">>$ENV{HOME}/.profile";
+print F,"\nexport PATH=\"".
+"\$HOME/bushcraft/bin:".
+"\$HOME/bushcraft/bin_pi:".
+"\$HOME/bushcraft/bin_pi_autorun:".
+"\$PATH\"\n";
+close F;
+};

@@ -1,16 +1,53 @@
-#!/bin/bash
+#!/usr/bin/perl
 # See 
 # http://iqjar.com/jar/sending-emails-from-the-raspberry-pi/
 # for details.
 
+$lconf = "$ENV{HOME}/.config/bushcraft/email.conf";
+$conf = "/etc/ssmtp/ssmtp.conf";
+
+if (-e $conf && $ARGV[0] ne "--force") {
+	print "File
+
+$conf
+
+exists. Remove it first if you want to update
+email config, or run this script with '--force':
+
+   email-init --force
+
+";
+	exit;
+};
+
+
+
+if (!-e "$lconf") {
+ system "cp '$ENV{HOME}/bushcraft/config/email.conf' '$lconf'";
+ print "Please edit the email configuration!";
+ sleep 2;
+ system "nano '$lconf'";
+ system "chown pi '$lconf'";
+} else {
+
+};
+
+if ($whoami ne "root") {
+   print "Running as root!";
+   system "sudo $0";
+   exit;
+};
 # Need to fetch config file.
-apt-get update
-apt-get install ssmtp
-apt-get install mailutils
-cat > /etc/ssmtp/ssmtp.conf <<-ENDSHERE
-    root=postmaster
-    mailhub=smtp.gmail.com:587
-    hostname=raspberrypi
-    UseSTARTTLS=YES
-ENDHERE
-cat bushcraft/config/email.conf >> /etc/ssmtp/ssmtp.conf
+system "sudo apt-get update; 
+sudo apt-get install ssmtp
+sudo apt-get install mailutils";
+
+open F,">$conf";
+print F "
+root=postmaster
+mailhub=smtp.gmail.com:587
+hostname=raspberrypi
+UseSTARTTLS=YES
+";
+close F;
+system "cat '$lconf' >> $conf";

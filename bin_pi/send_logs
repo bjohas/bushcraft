@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+
+$conf = "$ENV{HOME}/.config/bushcraft/";
+if ( -e "$conf/feedback.cfg") {
+    open F,"$conf/feedback.cfg";
+    while (<F>) {
+	if (m/^email\=(.*)$/) {
+	    $email = $1;
+	};
+    };
+    close F;
+    $serial = `serialnumber`;
+    $ip = `cat /boot/logs//boot/logs/external_ip.txt`;
+    if ($ip eq "") {
+	$logs = "/boot/logs";
+	if (!-e $logs) {
+	    mkdir($logs);
+	};	
+	system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
+	$ip = `cat /boot/logs//boot/logs/external_ip.txt`;
+    };
+    open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -a $str -- $email";
+    print F "See attached files.\n";
+    close F;
+} else {
+    print "
+Sorry, but 
+   $conf
+is not set up.
+";
+};

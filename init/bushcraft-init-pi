@@ -20,7 +20,7 @@ if (-e "/boot/bootcode.bin") {
 	   print "To install '$_' type y and press ENTER\n";
 	   ($ans = <STDIN>) =~ s/\s//g;
 	   if ($ans eq "y") {
-	       system "$_";
+	       system "./$_";
 	       print "\nInstalled!\n\n";
 	   } else {
 	       print "Not installed.\n\n";

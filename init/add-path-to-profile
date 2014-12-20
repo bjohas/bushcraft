@@ -1,19 +1,23 @@
 #!/usr/bin/perl
 
-if ($ARGV[0] eq "") {
+if (!-d "$ENV{HOME}/.profile") {
+    print "Sorry, $ENV{HOME}/.profile does not exist.\n";
+    exit;
+};
 open F,">>$ENV{HOME}/.profile";
-print F,"\nexport PATH=\"".
-"\$HOME/bushcraft/bin:".
-"\$HOME/bushcraft/bin_connect_to_headless_pi:".
-"\$PATH\"\n";
-close F;
+print F,"# If you want to remove bushcraft DELETE FROM HERE ...\n";
+if ($ARGV[0] eq "") {
+    print F,"\nPATH=\"".
+	"\$HOME/bushcraft/bin:".
+	"\$HOME/bushcraft/bin_connect_to_headless_pi:".
+	"\$PATH\"\n";
 };
 if ($ARGV[0] eq "pi") {
-open F,">>$ENV{HOME}/.profile";
-print F,"\nexport PATH=\"".
-"\$HOME/bushcraft/bin:".
-"\$HOME/bushcraft/bin_pi:".
-"\$HOME/bushcraft/bin_pi_autorun:".
-"\$PATH\"\n";
-close F;
+    print F,"\nPATH=\"".
+	"\$HOME/bushcraft/bin:".
+	"\$HOME/bushcraft/bin_pi:".
+	"\$HOME/bushcraft/bin_pi_autorun:".
+	"\$PATH\"\n";
 };
+print F,"# ... DELETE TO HERE.\n\n";
+close F;

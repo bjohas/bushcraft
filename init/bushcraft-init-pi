@@ -3,19 +3,19 @@
 if (-e "/boot/bootcode.bin") {
    chdir();
    chdir("bushcraft/init");
-   system "
-initreq
+   foreach (qw{initreq
 write-sysinfo-init-autostart
 first-start-init-autostart
 cron-init
 vnc-init-autostart
-vnc-init-password
-";
-print "
-If you want email to work, please enter gmail user / password
-in 
-      config/email.conf
-and then run
+vnc-init-password}) {
+       print "\n\n******** $_ *********\n\n";
+       system "$_";
+   };
+   print "\n\n******** add-path-to-profile pi  *********\n\n";
+   system "add-path-to-profile pi";
+   print "
+If you want email to work, please run
       email-init
 ";
 

@@ -1,15 +1,15 @@
 #!/usr/bin/perl
 
-open F,">/tmp/crontmp";
-print F "*/10 * * * * /home/pi/bushcraft/cron_commands\n";
+system "sudo crontab -l > /tmp/crontab";
+open F,">>/tmp/crontmp";
+print F "\n#Bushcraft starts\n*/10 * * * * /home/pi/bushcraft/cron_commands\n#Bushcraft ends\n";
 close F;
 system "sudo crontab /tmp/crontmp; rm /tmp/crontmp";
 
 __END__
 # Should not wipe the whole crontab, but just above entry...
 if ($ARGV[0] eq "off") {
-   open F,">/tmp/crontmp";
-   print F "\n";
-   close F;
-   system "sudo crontab /tmp/crontmp; rm /tmp/crontmp";
+    system "sudo crontab -l > /tmp/crontab";
+    system "cat /tmp/crontab | grep -v '/home/pi/bushcraft/cron_commands' > /tmp/crontab2";
+    system "sudo crontab /tmp/crontmp2; rm /tmp/crontmp; rm /tmp/crontmp2";
 };

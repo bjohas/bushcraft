@@ -17,9 +17,9 @@ if ( -e "$conf/feedback.cfg") {
 	    mkdir($logs);
 	};	
 	system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
-	$ip = `cat /boot/logs//boot/logs/external_ip.txt`;
+	$ip = `cat $logs/external_ip.txt`;
     };
-    $str = "/boot/logs/serial.txt";
+    $str = "$logs/serial.txt";
     open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -a $str -- $email";
     print F "See attached files.\n";
     close F;

@@ -31,6 +31,14 @@ if (-e "/boot/bootcode.bin") {
     system "uptime > $logs/uptime.txt";
     system "procinfo > $logs/procinfo.txt";
     system "rm $logs/logs.tgz; tar zcvf $logs/logs.tgz $logs/*txt;"; 
+    if ($ARGV[0] eq "--archive") {
+	if (!-d "$ENV{HOME}/logs/") {
+	    mkdir("$ENV{HOME}/logs/");
+	};
+	($date = `date +'%Y%m%d_%H%M%S'`) =~ s/\n//;
+	system "cp '$logs/logs.tgz' '$ENV{HOME}/logs/logs_$date.tgz'";
+    };
+
 } else {
     print "
 This script is meant for running on Raspberry Pi only.

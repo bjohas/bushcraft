@@ -10,9 +10,9 @@ if ( -e "$conf/feedback.cfg") {
     };
     close F;
     $serial = `serialnumber`;
-    $ip = `cat /boot/logs//boot/logs/external_ip.txt`;
+    $logs = "/boot/logs";
+    $ip = `cat $logs/external_ip.txt`;
     if ($ip eq "") {
-	$logs = "/boot/logs";
 	if (!-e $logs) {
 	    mkdir($logs);
 	};	

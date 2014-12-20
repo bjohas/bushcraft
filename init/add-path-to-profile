@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-if (!-d "$ENV{HOME}/.profile") {
+if (!-e "$ENV{HOME}/.profile") {
     print "Sorry, $ENV{HOME}/.profile does not exist.\n";
     exit;
 };

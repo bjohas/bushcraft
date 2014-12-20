@@ -5,6 +5,9 @@ open F,">>/tmp/crontmp";
 print F "\n#Bushcraft starts\n*/10 * * * * /home/pi/bushcraft/bin_pi_autorun/cron_commands\n#Bushcraft ends\n";
 close F;
 system "sudo crontab /tmp/crontmp; rm /tmp/crontmp";
+print "*** CURRENT CRONTAB FOR root ***\n";
+system "sudo crontab -l";
+print "*** *** ***\n";
 
 if ($ARGV[0] eq "off") {
     system "sudo crontab -l > /tmp/crontmp";

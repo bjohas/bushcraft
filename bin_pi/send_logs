@@ -7,25 +7,30 @@ if (-e "$conf/feedback.cfg") {
 	if (m/^email\=(.*)$/) {
 	    $email = $1;
 	};
+	if (m/^enabled\=\s*(\d)\s*$/) {
+	    $enabled = $1;
+	};
     };
     close F;
-    $serial = `serialnumber`;
-    $logs = "/boot/logs";
-    $ip = `cat $logs/external_ip.txt`;
-    if ($ip eq "") {
-	if (!-e $logs) {
-	    mkdir($logs);
-	};	
-	system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
+    if ($enabled eq "1") {
+	$serial = `serialnumber`;
+	$logs = "/boot/logs";
 	$ip = `cat $logs/external_ip.txt`;
-    };
-    $ip =~ s/\n//s;
+	if ($ip eq "") {
+	    if (!-e $logs) {
+		mkdir($logs);
+	    };	
+	    system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
+	    $ip = `cat $logs/external_ip.txt`;
+	};
+	$ip =~ s/\n//s;
 #    $str = "$logs/logs.tgz";
-    $str = "$logs/serial.txt";
-    open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -a $str -- $email";
-    print F "See attached files.\n";
-    print F "Date: ",`date`;
-    close F;
+	$str = "$logs/serial.txt";
+	open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -a $str -- $email";
+	print F "See attached files.\n";
+	print F "Date: ",`date`;
+	close F;
+    };
 } else {
     if ($ARGV[0] eq "--onlyifconfigured") {
     } else {

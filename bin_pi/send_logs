@@ -24,6 +24,7 @@ if (-e "$conf/feedback.cfg") {
     $str = "$logs/serial.txt";
     open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -a $str -- $email";
     print F "See attached files.\n";
+    print F "Date: ",`date`;
     close F;
 } else {
     if ($ARGV[0] eq "--onlyifconfigured") {

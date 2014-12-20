@@ -15,3 +15,5 @@ Exec=sudo bushcraft/sysinfo
 StartupNotify=false
 ";
 close F;
+
+system "ls -la .config/autostart/sysinfo.desktop";

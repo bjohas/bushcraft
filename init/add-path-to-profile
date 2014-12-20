@@ -7,13 +7,13 @@ if (!-e "$ENV{HOME}/.profile") {
 open F,">>$ENV{HOME}/.profile";
 print F "# If you want to remove bushcraft DELETE FROM HERE ...\n";
 if ($ARGV[0] eq "") {
-    print F "\nPATH=\"".
+    print F "PATH=\"".
 	"\$HOME/bushcraft/bin:".
 	"\$HOME/bushcraft/bin_connect_to_headless_pi:".
 	"\$PATH\"\n";
 };
 if ($ARGV[0] eq "pi") {
-    print F "\nPATH=\"".
+    print F "PATH=\"".
 	"\$HOME/bushcraft/bin:".
 	"\$HOME/bushcraft/bin_pi:".
 	"\$HOME/bushcraft/bin_pi_autorun:".
@@ -21,3 +21,4 @@ if ($ARGV[0] eq "pi") {
 };
 print F "# ... DELETE TO HERE.\n\n";
 close F;
+system "source '$ENV{HOME}/.profile'";

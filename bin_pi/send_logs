@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 $conf = "$ENV{HOME}/.config/bushcraft/";
-if ( -e "$conf/feedback.cfg") {
+if (-e "$conf/feedback.cfg") {
     open F,"$conf/feedback.cfg";
     while (<F>) {
 	if (m/^email\=(.*)$/) {
@@ -24,9 +24,12 @@ if ( -e "$conf/feedback.cfg") {
     print F "See attached files.\n";
     close F;
 } else {
-    print "
+    if ($ARGV[0] eq "--onlyifconfigured") {
+    } else {
+	print "
 Sorry, but 
    $conf
 is not set up.
 ";
+    };
 };

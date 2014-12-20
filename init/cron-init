@@ -1,13 +1,13 @@
 #!/usr/bin/perl
 
-system "sudo crontab -l > /tmp/crontab";
+system "sudo crontab -l > /tmp/crontmp";
 open F,">>/tmp/crontmp";
 print F "\n#Bushcraft starts\n*/10 * * * * /home/pi/bushcraft/bin_pi_autorun/cron_commands\n#Bushcraft ends\n";
 close F;
 system "sudo crontab /tmp/crontmp; rm /tmp/crontmp";
 
 if ($ARGV[0] eq "off") {
-    system "sudo crontab -l > /tmp/crontab";
-    system "cat /tmp/crontab | grep -v '/home/pi/bushcraft/bin_pi_autorun/cron_commands' > /tmp/crontab2";
+    system "sudo crontab -l > /tmp/crontmp";
+    system "cat /tmp/crontab | grep -v '#Bushcraft' | grep -v '/home/pi/bushcraft/bin_pi_autorun/cron_commands' > /tmp/crontab2";
     system "sudo crontab /tmp/crontmp2; rm /tmp/crontmp; rm /tmp/crontmp2";
 };

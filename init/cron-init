@@ -9,8 +9,8 @@ print "*** CURRENT CRONTAB FOR root ***\n";
 system "sudo crontab -l";
 print "*** *** ***\n";
 
-if ($ARGV[0] eq "off") {
+if ($ARGV[0] eq "off" || $ARGV[0] eq "--off") {
     system "sudo crontab -l > /tmp/crontmp";
-    system "cat /tmp/crontab | grep -v '#Bushcraft' | grep -v '/home/pi/bushcraft/bin_pi_autorun/cron_commands' > /tmp/crontab2";
+    system "cat /tmp/crontmp | grep -v '#Bushcraft' | grep -v '/home/pi/bushcraft/bin_pi_autorun/cron_commands' > /tmp/crontmp2";
     system "sudo crontab /tmp/crontmp2; rm /tmp/crontmp; rm /tmp/crontmp2";
 };

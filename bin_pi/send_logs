@@ -30,6 +30,11 @@ if (-e "$conf/feedback.cfg") {
 	print F "See attached files.\n";
 	print F "Date: ",`date`;
 	close F;
+    } else {
+	if ($ARGV[0] eq "--onlyifconfigured") {
+	} else {
+	    print "Sorry, $conf has enabled=0\n";
+	};
     };
 } else {
     if ($ARGV[0] eq "--onlyifconfigured") {

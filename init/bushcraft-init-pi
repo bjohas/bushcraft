@@ -3,21 +3,30 @@
 if (-e "/boot/bootcode.bin") {
    chdir();
    chdir("bushcraft/init");
-   foreach (qw{initreq
-write-sysinfo-init-autostart
-first-start-init-autostart
-cron-init
-vnc-init-autostart
-vnc-init-password}) {
-       print "\n\n******** $_ *********\n\n";
-       system "$_";
+@package = ("add-path-to-profile pi",
+"initreq",
+"write-sysinfo-init-autostart",
+"first-start-init-autostart",
+"cron-init",
+"vnc-init-autostart",
+"vnc-init-password",
+"email-init");
+   foreach (@package) {
+       if ($ARGV[0] eq "") {
+	   print "\n\n******** $_ *********\n\n";
+	   system "$_";
+       } else {
+	   print "\n\n******** $_ *********\n\n";
+	   print "To install '$_' type y and press ENTER\n";
+	   ($ans = <STDIN>) =~ s/\s//g;
+	   if ($ans eq "y") {
+	       system "$_";
+	       print "\nInstalled!\n\n";
+	   } else {
+	       print "Not installed.\n\n";
+	   };
+       };
    };
-   print "\n\n******** add-path-to-profile pi  *********\n\n";
-   system "add-path-to-profile pi";
-   print "
-If you want email to work, please run
-      email-init
-";
 
 } else {
     print "

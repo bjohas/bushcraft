@@ -1,11 +1,12 @@
 #!/usr/bin/perl
 
-print "This programme is meant for running on Raspberry Pi\n";
 if (!-e "/boot/bootcode.bin") {
+    print "This programme is meant for running on Raspberry Pi\n";
    print "Exit.\n";
    exit;
 };
-if ($ARGV[0] eq "off") {
+
+if ($ARGV[0] eq "off" || $ARGV[0] eq "--off") {
    system "rm .config/autostart/firststart.desktop";
    system "killall firststart";
    print "Stopped all instances of $0. Will not run again.\n";

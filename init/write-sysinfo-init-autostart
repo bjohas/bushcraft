@@ -1,7 +1,7 @@
 #!/bin/perl
 
-print "This programme is meant for running on Raspberry Pi";
 if (!-e "/boot/bootcode.bin") {
+    print "This programme is meant for running on Raspberry Pi";
    print "Exit.\n";
    exit;
 };

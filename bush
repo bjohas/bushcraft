@@ -15,11 +15,11 @@ if (!-e "bushcraft") {
     print "bushcraft installation finished.\n";
     print "If you are on Raspberry Pi, now type
 
-    sh bushcraft/init/bushcraft-init-pi
+    ./bushcraft/init/bushcraft-init-pi
 
 or if you are on another linux computer, type
 
-    sh bushcraft/init/bushcraft-init
+    ./bushcraft/init/bushcraft-init
 
 to initialise and install further required programs. 
 
@@ -27,7 +27,7 @@ The files in the bushcraft/config directory
 need to be updated to your requirements, or
 you can run
 
-   perl bushcraft/bushcraft-get-config <URL>
+   ./bushcraft/bushcraft-get-config <URL>
    
 to fetch these. You can also delete this file now:
 

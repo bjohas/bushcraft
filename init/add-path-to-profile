@@ -21,4 +21,4 @@ if ($ARGV[0] eq "pi") {
 };
 print F "# ... DELETE TO HERE.\n\n";
 close F;
-system "source '$ENV{HOME}/.profile'";
+# system "source '$ENV{HOME}/.profile'";

@@ -8,7 +8,7 @@ if (-e "/boot/bootcode.bin") {
     ($whoami = `whoami`) =~ s/\n//;
     if ($whoami ne "root") {
 	print "Restarting as root!";
-	system "sudo $0";
+	system "sudo $0 $ARGV[0]";
 	exit;
     };
     $logs = "/boot/logs";

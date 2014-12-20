@@ -1,0 +1,56 @@
+#!/usr/bin/perl
+
+@packages = qw{libreoffice
+geogebra 
+leafpad
+klavaro
+idle3};
+
+system "sudo apt-get update
+sudo apt-get dist-upgrade
+sudo apt-get install -y epiphany-browser";
+
+foreach (@packages) {
+	system "sudo apt-get -y install $_";
+};
+
+__END__
+
+# sudo apt-get install openoffice.org
+sudo apt-get install libreoffice
+
+geogebra
+midori
+new_idle3
+new_leafpad
+ocr_resources
+wpa_gui
+python-games
+lxterminal
+klavaro
+
+# Scratch / Scratch gpio
+
+sudo apt-get install scratch
+
+# Pibrella library
+
+sudo apt-get install python-pip
+sudo pip install pibrella
+
+# Pyglow library
+
+sudo apt-get install python-smbus
+wget https://github.com/benleb/PyGlow/archive/master.zip
+
+# VNC
+
+# Minecraft Pi
+
+# Mathematica
+
+# Sonic Pi
+ sonic-pi 
+
+# Tweepy 
+ python-tweepy  

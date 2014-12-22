@@ -1,5 +1,5 @@
 #!/usr/bin/perl
 
 # This file is run by cron every 10 mins.
-system "send_logs --onlyifconfigured";
+system "$ENV{HOME}/bushcraft/bin_pi/send_logs --onlyifconfigured";
 

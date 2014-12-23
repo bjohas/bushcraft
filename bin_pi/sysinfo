@@ -30,14 +30,14 @@ if (-e "/boot/bootcode.bin") {
     system "last > $logs/last.txt";
     system "uptime > $logs/uptime.txt";
     system "procinfo > $logs/procinfo.txt";
-    system "rm $logs/logs.tgz; tar zcvf $logs/logs.tgz $logs/*txt;"; 
+    system "rm $logs/sysinfo_logs.tgz; tar zcvf $logs/sysinfo_logs.tgz $logs/*txt;"; 
     if ($ARGV[0] eq "--archive") {
 	if (!-d "$ENV{HOME}/logs/") {
 	    mkdir("$ENV{HOME}/logs/");
 	};
 	($date = `date +'%Y%m%d_%H%M%S'`) =~ s/\n//;
-	system "cp '$logs/logs.tgz' '$ENV{HOME}/logs/logs_$date.tgz'";
-	print "Archived to $ENV{HOME}/logs/logs_$date.tgz\n";
+	system "cp '$logs/sysinfo_logs.tgz' '$ENV{HOME}/logs/sysinfo_logs_$date.tgz'";
+	print "Archived to $ENV{HOME}/logs/sysinfo_logs_$date.tgz\n";
     };
 
 } else {

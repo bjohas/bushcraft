@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+#libreoffice
 
-@packages = qw{libreoffice
+@packages = qw{openoffice.org
 geogebra 
 leafpad
 klavaro

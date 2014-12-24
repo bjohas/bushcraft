@@ -1,0 +1,2 @@
+#!/usr/bin/perl
+system("rsync","--progress","--partial","--inplace","-avz",@ARGV);

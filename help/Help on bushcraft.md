@@ -16,11 +16,20 @@ or
     
 which fetches the rest of the tools installation, and tells you what to do next. If you want to use the tools to enable user feedback, remote logins etc, you need to provide further config; again, the script tells you what to do.
 
-If you are setting up an installation for somebody else, you can do a more comprehensive install (with configuration) like this:
+If you are setting up an installation for somebody else, you can do a more comprehensive install (with configuration, and running bushcraft-init-pi) like this:
 
     perl bush -i yourserver/directory/
    
-This directory should have one or more of the files found in the bushcraft/config directory, but with configuration data filled in.
+This directory should have one or more of the files found in the bushcraft/config directory, but with configuration data filled in. Assuming that everything installed ok, then if you want to update bushcraft at any time (using git), you can just say
+
+    bush
+    
+Which will do a git pull, or
+
+    bush -c
+    
+which will update bushcraft, and then fetch a new configuration (and is equivalent to "bush; bushcraft-config").
+    
 
 
 bin

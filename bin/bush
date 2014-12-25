@@ -38,8 +38,6 @@ to fetch these. You can also delete this file now:
   };
 } else {
   system "cd bushcraft; git pull";
-  chdir("$ENV{HOME}");
-  system("./bushcraft/bin/bushcraft-config -r");
 };
 chdir("$ENV{HOME}");
 if ($ARGV[0] eq "-i" || $ARGV[0] eq "-c") {

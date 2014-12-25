@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
-$conf = "$ENV{HOME}/.config/bushcraft/"
+$conf = "$ENV{HOME}/.config/bushcraft/";
+chdir();
 
 if ($ARGV[0] eq "") {
     print "Usage:
@@ -33,7 +34,7 @@ if ($ARGV[0] ne "-m") {
 	
     } else {
 	
-	$url = $ARGG[0];
+	$url = $ARGV[0];
 	open F,">$conf/getconfig.cfg";
 	print F "base=$url\n";
 	close F;

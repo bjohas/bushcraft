@@ -3,6 +3,10 @@
 if (-e "/boot/bootcode.bin") {
    chdir();
    chdir("bushcraft/init");
+   if ($ARGV[0] ne "") {
+       system("./bushcraft/init/bushcraft-config '$ARGV[1]'");	    
+   };
+
 @package = ("add-path-to-profile pi",
 "initreq",
 "write-sysinfo-init-autostart",

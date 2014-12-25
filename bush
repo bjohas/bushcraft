@@ -42,6 +42,9 @@ to fetch these. You can also delete this file now:
 chdir("$ENV{HOME}");
 if ($ARGV[0] eq "-i") {
     if (-e "/boot/bootcode.bin") {
+	if ($ARGV[1] ne "") {
+	    system("./bushcraft/init/bushcraft-config '$ARGV[1]'");	    
+	};
 	system("./bushcraft/init/bushcraft-init-pi");
     };
 };

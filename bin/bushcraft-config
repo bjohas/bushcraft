@@ -3,7 +3,7 @@
 $conf = "$ENV{HOME}/.config/bushcraft/";
 chdir();
 
-if ($ARGV[0] eq "") {
+if ($ARGV[0] eq "-h") {
     print "Usage:
 $0 <base url for config files>
 

@@ -51,6 +51,7 @@ if ($ARGV[0] ne "-m") {
     chdir();
     opendir(my $dh, "$ENV{HOME}/bushcraft/config") || die;
     while(readdir $dh) {
+	next if m/^(\.|\.\.)$/;
 	print "Fetching $_\n";
 	system "wget -q -O $conf/temp.txt $url/$_";
 	if (-e "$conf/temp.txt" && !-z "$conf/temp.txt") {

@@ -44,7 +44,7 @@ if ($ARGV[0] ne "-m") {
 	open F,">$conf/source.cfg";
 	print F "base=$url\n";
 	close F;
-	
+	exit;
     };
     
     $url =~ s/\n//;

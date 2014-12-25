@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 # This file is retrieved from tiny.cc/bush, to start the process.
+chdir("$ENV{HOME}");
 if (!-e "bushcraft") {
   print "Trying to install bushcraft using git / wget / curl ...\n";
   system "git clone https://github.com/bjohas/bushcraft.git";
@@ -37,4 +38,10 @@ to fetch these. You can also delete this file now:
   };
 } else {
   system "cd bushcraft; git pull";
+};
+chdir("$ENV{HOME}");
+if ($ARGV[0] eq "-i") {
+    if (-e "/boot/bootcode.bin") {
+	system("./bushcraft/init/bushcraft-init-pi");
+    };
 };

@@ -12,7 +12,7 @@ if (-e "$conf/feedback.cfg") {
 	};
     };
     close F;
-    if ($enabled eq "1" || $ARGV[0] "--always") {
+    if ($ARGV[0] ne "--onlyifconfigured" || $enabled eq "1") {
 	$serial = `$ENV{HOME}/bushcraft/bin_pi/serialnumber`;
 	$logs = "/boot/logs";
 	$ip = `cat $logs/external_ip.txt`;

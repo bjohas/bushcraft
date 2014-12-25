@@ -16,8 +16,10 @@ to reuse.
     exit;
 };
 
-if ($ARGV[0] ne "-c") {
+if ($ARGV[0] eq "-c") {
+    print "Removing: $conf/source.cfg\n";
     system("rm","$conf/source.cfg");
+    exit;
 };
 if ($ARGV[0] ne "-m") {
     if ($ARGV[0] eq "-r") {

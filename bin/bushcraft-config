@@ -44,7 +44,6 @@ if ($ARGV[0] ne "-m") {
 	open F,">$conf/source.cfg";
 	print F "base=$url\n";
 	close F;
-	exit;
     };
     
     $url =~ s/\n//;
@@ -54,13 +53,15 @@ if ($ARGV[0] ne "-m") {
     while(readdir $dh) {
 	print "Fetching $_\n";
 	system "wget -q -O $conf/temp.txt $url/$_";
-	if (!-z "bushcraft/config/temp.txt") {
+	if (-e "bushcraft/config/temp.txt" && !-z "bushcraft/config/temp.txt") {
 	    print "- Updating $_\n";
 	    system("mv","$conf/temp.txt","$conf/$_");
 	} else {
 	    print "- NOT Updating $_\n";
 	};
-	system("rm","$conf/temp.txt");
+	if (-e "bushcraft/config/temp.txt") {
+	    system("rm","$conf/temp.txt");
+	};
     };
     closedir $dh;
     

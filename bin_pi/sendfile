@@ -14,12 +14,16 @@ if (-e "$conf/feedback.cfg") {
     close F;
     $serial = `$ENV{HOME}/bushcraft/bin_pi/serialnumber`;
     $ip = `ipaddress`;
-    open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -a $str -- $email";
-    print F "Text follows..\n";
-    print F "Date: ",`date`;
-    while (<>) {
-	print F;
+    @a = @ARGV;
+    foreach (@a) {
+	s/\'/\\\'/g;
+	s/\"/\\\"/g;
+	$_ = "\"" . $_ . "\"";
     };
+    $str = join " ",@a;
+    open F,"|sudo mutt -s \"File from $serial, with $ip\" -a $str -- $email";
+    print F "See attached files.\n";
+    print F "Date: ",`date`;
     close F;
     print "Feedback from $serial, with $ip and logfile $str sent to $email\n";
 } else {

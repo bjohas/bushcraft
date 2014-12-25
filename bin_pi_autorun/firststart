@@ -34,7 +34,7 @@ stop while you are logged in. To disable them anyway for this session, use
 
 or to disable permanently use 
 
-    firststart-init-autorun off
+    firststart-init-autostart off
 
 ";
     exit;

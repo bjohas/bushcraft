@@ -56,12 +56,12 @@ if ($ARGV[0] ne "-m") {
 	print "Fetching $_\n";
 	system "wget -q -O $conf/temp.txt $url/$_";
 	if (-e "$conf/temp.txt" && !-z "$conf/temp.txt") {
-	    print "- Updating $_\n";
+	    print "- Updating $_\n\n";
 	    system("mv","$conf/temp.txt","$conf/$_");
 	} else {
-	    print "- NOT Updating $_\n";
+#	    print "- ...  $_\n\n";
 	};
-	if (-e "bushcraft/config/temp.txt") {
+	if (-e "$conf/temp.txt") {
 	    system("rm","$conf/temp.txt");
 	};
     };

@@ -39,7 +39,7 @@ to login to the rpi with SSH.
 2. Listen to the IP address on the headphone socket
 ---------------------------------------------------
 
-If the Raspberry Pi has bushcraft installed: If the Pi is booted but no user is logged in, it's IP address can be heard read out on the headphone socket.
+If the Raspberry Pi has bushcraft installed: If the Pi is booted but no user is logged in, it's IP address can be heard read out on the headphone socket.  This is done by the 'firststart' command - of course, you only have that if you previously managed to connect to your Raspberry Pi, or if your installation came with bushcraft already (and firststart has been enabled). But if it has, the Raspberry Pi will speak its IP after boot, and you just need to connect a headset or speaker to figure out whether it got an IP address, and what it is.
 
 Listen to the address being read out and write it down. The IP address is read out in four groups separated by a dot, each group consists of a three digit number. The number in each group must be between 0 and 254. 
 

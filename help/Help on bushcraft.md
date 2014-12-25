@@ -16,11 +16,20 @@ or
     
 which fetches the rest of the tools installation, and tells you what to do next. If you want to use the tools to enable user feedback, remote logins etc, you need to provide further config; again, the script tells you what to do.
 
-If you are setting up an installation for somebody else, you can do a more comprehensive install (with configuration) like this:
+If you are setting up an installation for somebody else, you can do a more comprehensive install (with configuration, and running bushcraft-init-pi) like this:
 
     perl bush -i yourserver/directory/
    
-This directory should have one or more of the files found in the bushcraft/config directory, but with configuration data filled in.
+This directory should have one or more of the files found in the bushcraft/config directory, but with configuration data filled in. Assuming that everything installed ok, then if you want to update bushcraft at any time (using git), you can just say
+
+    bush
+    
+Which will do a git pull, or
+
+    bush -c
+    
+which will update bushcraft, and then fetch a new configuration (and is equivalent to "bush; bushcraft-config").
+    
 
 
 bin
@@ -54,6 +63,8 @@ sshpi, vncpi to connect to the Pi, or screenpi to use the screen command to conn
 - bin_connect_to_headless_pi/share-connection
 - bin_connect_to_headless_pi/sshpi
 - bin_connect_to_headless_pi/vncpi
+
+Also see 'Help on finding the IP address on a Raspberry Pi.md' for help with this. The 'firststart' command is also useful - of course, you only have that if you previously managed to connect to your Raspberry Pi, or if your installation came with bushcraft already (and firststart has been enabled). But if it has, the Raspberry Pi will speak its IP after boot, and you just need to connect a headset or speaker to figure out whether it got an IP address, and what it is.
 
 bin_pi
 ======

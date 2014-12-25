@@ -24,8 +24,9 @@ if (-e "$conf/feedback.cfg") {
 	    $ip = `cat $logs/external_ip.txt`;
 	};
 	$ip =~ s/\n//s;
-#    $str = "$logs/logs.tgz";
 	$str = "$logs/serial.txt";
+#	$str = "$logs/logs.tgz";
+	$str = "$logs/sysinfo_logs.tgz";
 	open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -a $str -- $email";
 	print F "See attached files.\n";
 	print F "Date: ",`date`;

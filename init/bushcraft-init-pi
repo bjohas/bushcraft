@@ -3,7 +3,7 @@
 if (-e "/boot/bootcode.bin") {
    chdir();
    chdir("bushcraft/init");
-   if ($ARGV[0] ne "") {
+   if ($ARGV[0] eq "-i") {
        system("./bushcraft/init/bushcraft-config '$ARGV[1]'");	    
    };
 
@@ -16,7 +16,7 @@ if (-e "/boot/bootcode.bin") {
 "vnc-init-password",
 "email-init");
    foreach (@package) {
-       if ($ARGV[0] eq "") {
+       if ($ARGV[0] eq "" || $ARGV[0] eq "-i") {
 	   print "\n\n******** $_ *********\n\n";
 	   system "$_";
        } else {

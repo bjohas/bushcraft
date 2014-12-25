@@ -14,17 +14,8 @@ if (-e "$conf/feedback.cfg") {
     close F;
     if ($ARGV[0] ne "--onlyifconfigured" || $enabled eq "1") {
 	$serial = `$ENV{HOME}/bushcraft/bin_pi/serialnumber`;
-	$logs = "/boot/logs";
-	$ip = `cat $logs/external_ip.txt`;
-	if ($ip eq "") {
-	    if (!-e $logs) {
-		mkdir($logs);
-	    };	
-	    system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
-	    $ip = `cat $logs/external_ip.txt`;
-	};
-	$ip =~ s/\n//s;
-	$str = "$logs/serial.txt";
+	$ip = `ipaddress`;
+#	$str = "$logs/serial.txt";
 #	$str = "$logs/logs.tgz";
 	$str = "$logs/sysinfo_logs.tgz";
 	open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -a $str -- $email";

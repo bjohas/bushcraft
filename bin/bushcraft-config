@@ -22,7 +22,7 @@ if ($ARGV[0] eq "-c") {
     exit;
 };
 if ($ARGV[0] ne "-m") {
-    if ($ARGV[0] eq "-r") {
+    if ($ARGV[0] eq "-r" || $ARGV[0] eq "")  {
 	
 	if ( -e "$conf/source.cfg") {
 	    open F,"$conf/source.cfg";
@@ -33,7 +33,7 @@ if ($ARGV[0] ne "-m") {
 	    };
 	    close F;
 	} else {
-	    print "Sorry, config file not found\n";
+	    print "Sorry, config file $conf/source.cfg not found\n";
 	    exit;
 	};
 	

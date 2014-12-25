@@ -1,11 +1,38 @@
+Getting started
+===============
+
+Bushcraft is a set of tools for remote support of linux computers, with some special bits for Raspberry Pi.
+
+You install bushcraft by retrieving http://tiny.cc/bush, e.g.
+
+    wget tiny.cc/bush
+or
+
+    curl tiny.cc/bush
+
+(omitted http:// in order to type as little as possible) and then running:
+
+    perl bush
+    
+which fetches the rest of the tools installation, and tells you what to do next. If you want to use the tools to enable user feedback, remote logins etc, you need to provide further config; again, the script tells you what to do.
+
+If you are setting up an installation for somebody else, you can do a more comprehensive install (with configuration) like this:
+
+   perl bush -i yourserver/directory/
+   
+This directory should have one or more of the files found in the bushcraft/config directory, but with configuration data filled in.
+
+
 bin
 ===
 
 The bin directory contains scripts that are useful for any architecture:
 
-- bin/bush: Updates bushcraft
+- bin/bush: Installs/updates bushcraft
 - bin/bushcraft-config: Updates the bushcraft configuration
 - bin/tunnel: Sets up a tunnel
+
+In particular, you can use bush as described above to install bushcraft.
 
 These are also useful:
 - bin/ping3
@@ -67,14 +94,23 @@ config
 
 The config directory has got sample configuration files available. These can be updated by using
 
-     bin/bushcraft-config url
+     bin/bushcraft-config <url>
 
 The following config files are available:
 
-- config/email.cfg
-- config/feedback.cfg
-- config/source.cfg
-- config/tunnel.cfg
+- config/email.cfg (credentials for sending email, i.e. a gmail user name and password)
+- config/feedback.cfg (who emails should be sent to) 
+- config/source.cfg (the url to use for config updates, is updated with <url> by bushcraft-config)
+- config/tunnel.cfg (configuration files for setting up a tunnel)
+
+By running 'bin/bushcraft-config <url>', the script will look for 
+
+- <url>/email.cfg
+- <url>/feedback.cfg
+- <url>/source.cfg
+- <url>/tunnel.cfg
+
+and if those files are available, update corresponding files in ~/.config/bushcraft/.
 
 init
 ====
@@ -83,14 +119,24 @@ The init directory has various initialisation scripts in it, that would typicall
 Ideally you would run these when you have good connectivity, i.e. to prepare a laptop or a Raspberry Pi
 for running in less favourable environments.
 
-- init/add-path-to-profile
+These files do basic initialisation:
 - init/bushcraft-init
-- init/bushcraft-init-pi
-- init/initreq
-- init/cron-init
-- init/email-init
-- init/firststart-init-autostart
-- init/vnc-init-autostart
-- init/vnc-init-password
-- init/write-sysinfo-init-autostart
-- init/pi-init-education
+- init/bushcraft-init-pi 
+
+If bushcraft-init-pi is run as 
+
+   bushcraft-init-pi -i <url>
+   
+then "bushcraft-config <url>" is invoked. There after, bushcraft-init-pi runs these scripts:
+
+- init/add-path-to-profile
+- init/initreq (installs various packages)
+- init/cron-init (adds a line to the crontab, to run cron_commands every 10 mins)
+- init/email-init (uses email.cfg)
+- init/vnc-init-autostart (sets up vnc to start automatically after boot)
+- init/vnc-init-password (sets up a default password for vnc)
+- init/firststart-init-autostart (sets up firststart to run automatically after boot)
+- init/write-sysinfo-init-autostart (set up sysinfo to run automatically after boot)
+
+To install education packages, use:
+- init/pi-init-education (installs various education packages)

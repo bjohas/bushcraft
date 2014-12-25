@@ -39,7 +39,7 @@ if (-e "/boot/bootcode.bin") {
 	system "cp '$logs/sysinfo_logs.tgz' '$ENV{HOME}/logs/sysinfo_logs_$date.tgz'";
 	print "Archived to $ENV{HOME}/logs/sysinfo_logs_$date.tgz\n";
     };
-
+    system "cp '$logs/sysinfo_logs.tgz' '$ENV{HOME}/Desktop'";
 } else {
     print "
 This script is meant for running on Raspberry Pi only.

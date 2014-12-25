@@ -25,7 +25,7 @@ if (-e "$conf/feedback.cfg") {
     print F "See attached files.\n";
     print F "Date: ",`date`;
     close F;
-    print "Feedback from $serial, with $ip and logfile $str sent to $email\n";
+    print "File from $serial, with $ip and logfile $str sent to $email\n";
 } else {
     if ($ARGV[0] eq "--onlyifconfigured") {
     } else {

@@ -55,6 +55,8 @@ sshpi, vncpi to connect to the Pi, or screenpi to use the screen command to conn
 - bin_connect_to_headless_pi/sshpi
 - bin_connect_to_headless_pi/vncpi
 
+Also see 'Help on finding the IP address on a Raspberry Pi.md' for help with this. The 'firststart' command is also useful - of course, you only have that if you previously managed to connect to your Raspberry Pi, or if your installation came with bushcraft already (and firststart has been enabled). But if it has, the Raspberry Pi will speak its IP after boot, and you just need to connect a headset or speaker to figure out whether it got an IP address, and what it is.
+
 bin_pi
 ======
 

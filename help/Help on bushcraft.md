@@ -18,7 +18,7 @@ which fetches the rest of the tools installation, and tells you what to do next.
 
 If you are setting up an installation for somebody else, you can do a more comprehensive install (with configuration) like this:
 
-   perl bush -i yourserver/directory/
+    perl bush -i yourserver/directory/
    
 This directory should have one or more of the files found in the bushcraft/config directory, but with configuration data filled in.
 

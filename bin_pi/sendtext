@@ -12,7 +12,9 @@ if (-e "$conf/feedback.cfg") {
 	};
     };
     close F;
-    open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -a $str -- $email";
+    $serial = `$ENV{HOME}/bushcraft/bin_pi/serialnumber`;
+    $ip = `ipaddress`;
+    open F,"|sudo mutt -s \"Feedback from $serial, with $ip\" -- $email";
     print F "Text follows..\n";
     print F "Date: ",`date`;
     while (<>) {

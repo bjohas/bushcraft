@@ -3,9 +3,9 @@ bin
 
 The bin directory contains scripts that are useful for any architecture:
 
-bin/bush: Updates bushcraft
-bin/bushcraft-config: Updates the bushcraft configuration
-bin/tunnel: Sets up a tunnel
+- bin/bush: Updates bushcraft
+- bin/bushcraft-config: Updates the bushcraft configuration
+- bin/tunnel: Sets up a tunnel
 
 These are also useful:
 bin/ping3

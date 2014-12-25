@@ -3,16 +3,16 @@ set -o nounset
 
 . ./bushcraft-init
 
-# configurable in tunnel.config
+# configurable in tunnel.cfg
 REMOTE_HOST=""
 REMOTE_PORT=22
 LISTEN_PORT=""
 LOGIN_USER="tunnel"
 
-CONFIG=$CONFIG_PATH/tunnel.config
+CONFIG=$CONFIG_PATH/tunnel.cfg
 
 if ! [ -f $CONFIG ] ; then
-    print "not configuration found at $CONFIG_PATH/tunnel.config"
+    print "not configuration found at $CONFIG_PATH/tunnel.cfg"
     exit 1 
 fi
 

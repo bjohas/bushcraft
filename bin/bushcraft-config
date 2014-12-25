@@ -40,6 +40,7 @@ if ($ARGV[0] ne "-m") {
     } else {
 	
 	$url = $ARGV[0];
+	print "Updating $conf/source.cfg\n";
 	open F,">$conf/source.cfg";
 	print F "base=$url\n";
 	close F;

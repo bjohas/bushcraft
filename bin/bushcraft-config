@@ -16,8 +16,11 @@ to reuse.
     exit;
 };
 
+if ($ARGV[0] ne "-c") {
+    system("rm","$conf/source.cfg");
+};
 if ($ARGV[0] ne "-m") {
-    if ($ARGV eq "-r") {
+    if ($ARGV[0] eq "-r") {
 	
 	if ( -e "$conf/source.cfg") {
 	    open F,"$conf/source.cfg";

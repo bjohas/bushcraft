@@ -19,8 +19,8 @@ to reuse.
 if ($ARGV[0] ne "-m") {
     if ($ARGV eq "-r") {
 	
-	if ( -e "$conf/getconfig.cfg") {
-	    open F,"$conf/getconfig.cfg";
+	if ( -e "$conf/source.cfg") {
+	    open F,"$conf/source.cfg";
 	    while (<F>) {
 		if (m/^base\=(.*)$/) {
 		    $url = $1;
@@ -35,7 +35,7 @@ if ($ARGV[0] ne "-m") {
     } else {
 	
 	$url = $ARGV[0];
-	open F,">$conf/getconfig.cfg";
+	open F,">$conf/source.cfg";
 	print F "base=$url\n";
 	close F;
 	

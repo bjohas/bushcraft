@@ -1,2 +1,7 @@
-#!/bin/sh
-cat /var/lib/dhcp/dhcpd.leases
+#!/usr/bin/perl
+
+print "If you are running the DHCP daemon,
+you can find DHCP leases in the /var/lib/dhcp/dhcpd.leases
+file.
+";
+system "cat /var/lib/dhcp/dhcpd.leases";

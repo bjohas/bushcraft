@@ -1,2 +1,6 @@
 #!/bin/sh
+echo "This command shuts down your computer."
+echo "sudo halt"
+echo "(or)"
+echo "sudo shutdown -h now"
 sudo shutdown -h now

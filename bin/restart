@@ -1,2 +1,6 @@
 #!/bin/sh
+echo "This command restarts your computer."
+echo "sudo reboot"
+echo "(or)"
+echo "sudo shutdown -r now"
 sudo shutdown -r now

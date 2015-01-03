@@ -1,7 +1,36 @@
 #!/usr/bin/perl
 
-print "If you are running the DHCP daemon,
-you can find DHCP leases in the /var/lib/dhcp/dhcpd.leases
-file.
+$file = "/private/var/db/dhcpd_leases";
+if (-e $file) {
+    print "
+OS X (Darwin) / Internet sharing:
+If you are internet sharing on OS X, the DHCP leases are here:
+$file
+The first entry may well be the IP address of the Raspberry Pi.
+------
 ";
-system "cat /var/lib/dhcp/dhcpd.leases";
+    system "cat $file";
+};
+
+$file = "/var/lib/dhcp/dhcpd.leases";
+if (-e $file) {
+    print "
+Linux / DHCPD:
+If you are running the DHCP daemon, you can find DHCP leases here:
+$file
+------
+";
+    system "cat $file";
+};
+
+$file = "/var/lib/misc/dnsmasq.leases";
+if (-e $file) {
+    print "
+Linux / Internet sharing:
+If you are internet sharing on linux you can find DHCP leases here:
+$file
+The last entry may well be IP address of your Raspberry Pi.
+------
+";
+    system "cat $file";
+};

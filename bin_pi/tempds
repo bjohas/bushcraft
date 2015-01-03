@@ -2,4 +2,8 @@
 
 sudo modprobe w1-gpio
 sudo modprobe w1-therm
-cd /sys/bus/w1/devices/w1_slave
+cd /sys/bus/w1/devices
+echo "Temperature probes:"
+ls 28-*
+echo "Reading:"
+cat 28-*/w1_slave

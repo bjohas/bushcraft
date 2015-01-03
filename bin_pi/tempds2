@@ -25,10 +25,21 @@ if ($tb =~ m/^\d+(\d)(\d{10})$/) {
     $t2 = $t1;
 };
 $t2 = $t2 / 16;
-print "T=$s2$t2
+if ($ARGV[0] !~ m/\-/) {
+    print "T=$s2$t2
 T_hexadecimal=$hex
 t=$t_direct
 ";
+};
+if ($ARGV[0] =~ m/\-t/) {
+    print "$s2$t2";
+};
+if ($ARGV[0] =~ m/\-T/) {
+    print "$t_direct";
+};
+if ($ARGV[0] =~ m/\-x/) {
+    print "$hex";
+};
 
 if ($ARGV[0] eq "-l") {
     mkdir("/home/pi/Desktop/temperature_log") if !-d "/home/pi/Desktop/temperature_log";

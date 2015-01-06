@@ -3,7 +3,21 @@ Getting started
 
 Bushcraft is a set of tools for remote support of linux computers, with some special bits for Raspberry Pi.
 
-You install bushcraft by retrieving http://tiny.cc/bush, e.g.
+If you are unsure whether you have wget or curl, open a terminal, and type
+
+ curl
+ 
+You should see
+ curl: try 'curl --help' or 'curl --manual' for more information
+
+To see whether you have wget, type
+
+ wget
+
+You should see
+ wget: missing URL
+
+If you have wget or curl, you install bushcraft by retrieving http://tiny.cc/bush, e.g.
 
     wget tiny.cc/bush
 or
@@ -15,6 +29,8 @@ or
     perl bush
     
 which fetches the rest of the tools installation, and tells you what to do next. If you want to use the tools to enable user feedback, remote logins etc, you need to provide further config; again, the script tells you what to do.
+
+See below, if you do not have wget, curl, or perl.
 
 If you are setting up an installation for somebody else, you can do a more comprehensive install (with configuration, and running bushcraft-init-pi) like this:
 
@@ -30,8 +46,15 @@ Which will do a git pull, or
     
 which will update bushcraft, and then fetch a new configuration (and is equivalent to "bush; bushcraft-config").
     
+If you don't have wget or curl, you can visit http://tiny.cc/bush in a webbrowser, and save the resulting file. Or you can try to get wget/curl, by typing
 
+  sudo apt-get install wget
+  sudo apt-get install curl
 
+If you need to install perl, you can type
+
+  sudo apt-get install perl
+  
 bin
 ===
 

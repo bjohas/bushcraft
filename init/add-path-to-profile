@@ -18,17 +18,29 @@ print "Adding bushcraft path to $p\n";
 open F,">>$p";
 print F "# If you want to remove bushcraft DELETE FROM HERE ...\n";
 if ($ARGV[0] eq "") {
-    print F "PATH=\"".
-	"\$HOME/bushcraft/bin:".
-	"\$HOME/bushcraft/bin_connect_to_headless_pi:".
-	"\$PATH\"\n";
+    if (-e "/boot/bootcode.bin") {
+	print "You seem to be on a Raspberry Pi... Run
+$0 pi
+";
+    } else {
+	print F "PATH=\"".
+	    "\$HOME/bushcraft/bin:".
+	    "\$HOME/bushcraft/bin_connect_to_headless_pi:".
+	    "\$PATH\"\n";
+    };
 };
 if ($ARGV[0] eq "pi") {
-    print F "PATH=\"".
-	"\$HOME/bushcraft/bin:".
-	"\$HOME/bushcraft/bin_pi:".
-	"\$HOME/bushcraft/bin_pi_autorun:".
-	"\$PATH\"\n";
+    if (!-e "/boot/bootcode.bin") {
+	print "You do not seem to be on a Raspberry Pi... Run
+$0
+";
+    } else {
+	print F "PATH=\"".
+	    "\$HOME/bushcraft/bin:".
+	    "\$HOME/bushcraft/bin_pi:".
+	    "\$HOME/bushcraft/bin_pi_autorun:".
+	    "\$PATH\"\n";
+    };
 };
 print F "# ... DELETE TO HERE.\n\n";
 close F;

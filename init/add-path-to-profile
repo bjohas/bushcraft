@@ -1,9 +1,21 @@
 #!/usr/bin/perl
 
-if (!-e "$ENV{HOME}/.profile") {
-    print "$ENV{HOME}/.profile does not exist - creating!\n";
+@profiles = qw{$ENV{HOME}/.bash_profile $ENV{HOME}/.bash_login $ENV{HOME}/.profile};
+
+$p = "";
+foreach (@profiles) {
+    if (-e $_ && $p eq "") {
+	$p = $_;
+    };
 };
-open F,">>$ENV{HOME}/.profile";
+$p = $profiles[0] if $p eq "";
+
+if (!-e "$p") {
+    print "$p does not exist - creating!\n";
+};
+
+print "Adding bushcraft path to $p\n";
+open F,">>$p";
 print F "# If you want to remove bushcraft DELETE FROM HERE ...\n";
 if ($ARGV[0] eq "") {
     print F "PATH=\"".
@@ -20,4 +32,4 @@ if ($ARGV[0] eq "pi") {
 };
 print F "# ... DELETE TO HERE.\n\n";
 close F;
-# system "source '$ENV{HOME}/.profile'";
+# system "source '$p'";

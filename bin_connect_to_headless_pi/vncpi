@@ -1,2 +1,2 @@
 #!/bin/sh
-vncviewer -passwd .vnc/passwd  10.42.0.97:1
+vncviewer -passwd .vnc/passwd  `ippi`:1

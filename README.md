@@ -10,7 +10,8 @@ or
 
     curl tiny.cc/bush
 
-(omitted http:// in order to type as little as possible) and then running:
+(omitted http:// in order to type as little as possible). (There may be cases where you don't have wget or curl, see the help directory if the above doesn't work.)
+Then run:
 
     perl bush
     

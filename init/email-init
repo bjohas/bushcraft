@@ -41,6 +41,7 @@ print "Updating installation.....\n";
 
 system "sudo apt-get update; 
 sudo apt-get  -y install ssmtp
+sudo apt-get  -y install mutt
 sudo apt-get  -y install mailutils";
 
 print "Writing config files ....\n";

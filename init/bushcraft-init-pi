@@ -15,7 +15,7 @@ if (-e "/boot/bootcode.bin") {
 "cron-init",
 "vnc-init-autostart",
 "vnc-init-password",
-"email-init");
+"email-init --force");
    foreach (@package) {
        if ($ARGV[0] eq "" || $ARGV[0] eq "-i") {
 	   print "\n\n******** $_ *********\n\n";
@@ -32,6 +32,18 @@ if (-e "/boot/bootcode.bin") {
 	   };
        };
    };
+
+   print "To get bushcraft fully working, now type
+
+. .profile
+
+and press enter. If you get 'file not found', type:
+
+cd; . .profile
+
+Alternatively, close the terminal, and log in again.
+
+";
 
 } else {
     print "

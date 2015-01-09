@@ -4,7 +4,8 @@ if (-e "/boot/bootcode.bin") {
    chdir();
    chdir("bushcraft/init");
    if ($ARGV[0] eq "-i") {
-       system("./bushcraft/init/bushcraft-config '$ARGV[1]'");	    
+       print "*** CONFIG FOR $ARGV[1] ***\n";
+       system("$ENV{HOME}/bushcraft/bin/bushcraft-config '$ARGV[1]'");	           
    };
 
 @package = ("add-path-to-profile pi",

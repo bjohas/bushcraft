@@ -60,7 +60,7 @@ if ($ARGV[0] ne "-m") {
 	    print "- Updating $_\n";
 	    system("mv","$conf/temp.txt","$conf/$_");
 	} else {
-#	    print "- ...  $_\n\n";
+	    print "- NOT UPDATING $_\n\n";
 	};
 	if (-e "$conf/temp.txt") {
 	    system("rm","$conf/temp.txt");

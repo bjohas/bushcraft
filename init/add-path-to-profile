@@ -19,7 +19,7 @@ if (!-e "$p") {
 
 print "Adding bushcraft path to $p\n";
 open F,">>$p";
-print F "# If you want to remove bushcraft DELETE FROM HERE ...\n";
+print F "\n\n# If you want to remove bushcraft DELETE FROM HERE ...\n";
 if ($ARGV[0] eq "") {
     if (-e "/boot/bootcode.bin") {
 	print "You seem to be on a Raspberry Pi... Run

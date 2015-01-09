@@ -18,8 +18,8 @@ system "cd; mkdir .config; mkdir .config/autostart;" if !-d ".config/autostart";
 open F,">.config/autostart/firststart.desktop";
 print F "[Desktop Entry]
 Type=Application
-Name=firststart
-Exec=firststart
+Name=firstrun
+Exec=firstrun
 StartupNotify=false
 ";
 close F;

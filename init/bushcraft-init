@@ -1,3 +1,4 @@
 CONFIG_PATH=./config
 cd ~/bushcraft/init
-initreq
+./add-path-to-profile
+./initreq

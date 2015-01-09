@@ -19,10 +19,9 @@ You should see
 
 If you have wget or curl, you install bushcraft by retrieving http://tiny.cc/bush, e.g.
 
-    wget tiny.cc/bush
-or
-
     curl tiny.cc/bush
+or
+    wget --no-check-certificate -O bush tiny.cc/bush
 
 (omitted http:// in order to type as little as possible) and then running:
 

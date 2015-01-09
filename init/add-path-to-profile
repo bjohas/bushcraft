@@ -47,4 +47,4 @@ $0
 };
 print F "# ... DELETE TO HERE.\n\n";
 close F;
-# system "source '$p'";
+system "source '$p'";

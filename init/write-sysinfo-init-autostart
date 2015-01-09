@@ -11,7 +11,7 @@ open F,">.config/autostart/sysinfo.desktop";
 print F "[Desktop Entry]
 Type=Application
 Name=sysinfo
-Exec=sudo bushcraft/sysinfo
+Exec=sudo bushcraft/bin_pi/sysinfo
 StartupNotify=false
 ";
 close F;

@@ -11,7 +11,7 @@ if (-e "/boot/bootcode.bin") {
 @package = ("add-path-to-profile pi",
 "initreq",
 "write-sysinfo-init-autostart",
-"first-start-init-autostart",
+"firststart-init-autostart",
 "cron-init",
 "vnc-init-autostart",
 "vnc-init-password",

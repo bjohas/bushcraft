@@ -6,7 +6,7 @@
 # needs to be run as sudo
 ($whoami = `whoami`) =~ s/\n//;
 if ($whoami ne "root") {
-   print "Running as root!";
+   print "Running as root!\n\n";
    system "sudo perl $0";
    exit;
 };

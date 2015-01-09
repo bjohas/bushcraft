@@ -47,4 +47,3 @@ $0
 };
 print F "# ... DELETE TO HERE.\n\n";
 close F;
-system ". '$p'";

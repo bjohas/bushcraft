@@ -65,7 +65,7 @@ if ($ARGV[0] ne "-m") {
 	next if !-f "$ENV{HOME}/bushcraft/config/$_";
 	print "Considering $url/$_\n";
 	$tempfile = "$conf/temp.txt";
-	system "wget -q -O \"$tempfile\" $url/$_";
+	system "wget -q -O \"$tempfile\" \"$url/$_\"";
 	if (-e "$tempfile" && !-z "$tempfile") {
 	    print "- Updating $_\n";
 	    system("mv","$tempfile","$conf/$_");

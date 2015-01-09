@@ -12,19 +12,19 @@ Bushcraft is a set of tools for remote support of linux computers, with some spe
 
 If you are unsure whether you have wget or curl, open a terminal, and type
 
- curl
+    curl
  
 You should see
 
- curl: try 'curl --help' or 'curl --manual' for more information
+    curl: try 'curl --help' or 'curl --manual' for more information
 
 To see whether you have wget, type
 
- wget
+    wget
 
 You should see
 
- wget: missing URL
+    wget: missing URL
 
 If you have wget or curl, you install bushcraft by retrieving http://tiny.cc/bush, e.g.
 
@@ -58,12 +58,12 @@ which will update bushcraft, and then fetch a new configuration (and is equivale
     
 If you don't have wget or curl, you can visit http://tiny.cc/bush in a webbrowser, and save the resulting file. Or you can try to get wget/curl, by typing
 
-  sudo apt-get install wget
-  sudo apt-get install curl
+    sudo apt-get install wget
+    sudo apt-get install curl
 
 If you need to install perl, you can type
 
-  sudo apt-get install perl
+    sudo apt-get install perl
   
 bin
 ===

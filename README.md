@@ -7,6 +7,7 @@ You install bushcraft by retrieving http://tiny.cc/bush, e.g.
 
     curl -L -o bush tiny.cc/bush
 or
+
     wget --no-check-certificate -O bush tiny.cc/bush
     
 (omitted http:// in order to type as little as possible). (There may be cases where you don't have wget or curl, see the help directory if the above doesn't work.)

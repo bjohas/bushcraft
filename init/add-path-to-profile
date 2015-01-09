@@ -1,6 +1,9 @@
 #!/usr/bin/perl
 
-@profiles = qw{$ENV{HOME}/.bash_profile $ENV{HOME}/.bash_login $ENV{HOME}/.profile};
+@profiles = qw{.bash_profile .bash_login .profile};
+foreach (@profiles) {
+    $_ = $ENV{HOME} . "/" . $_;
+};
 
 $p = "";
 foreach (@profiles) {

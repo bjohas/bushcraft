@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 $conf = "$ENV{HOME}/.config/bushcraft/";
+system "mkdir -p '$conf'";
 chdir();
 
 if ($ARGV[0] eq "-h") {

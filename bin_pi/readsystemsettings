@@ -7,7 +7,7 @@
 ($whoami = `whoami`) =~ s/\n//;
 if ($whoami ne "root") {
    print "Running as root!";
-   system "sudo $0";
+   system "sudo perl $0";
    exit;
 };
 $cfg = "/boot/config";

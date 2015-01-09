@@ -3,7 +3,7 @@
 # hostname, wifi login, whether to shutdown after start
 # and sets them.
 
-# needs to be run as sudo
+# needs to be run as sudo 
 ($whoami = `whoami`) =~ s/\n//;
 if ($whoami ne "root") {
    print "Running as root!";

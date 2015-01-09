@@ -1,11 +1,5 @@
 Help
 
-General things that are useful to know
-======================================
-
-In Ubuntu / Linux GUI, you can type ctrl-alt-t to get a terminal.
-
-It's best if you can copy and paste the commands below, but if you are typing them in, then take care to type them exactly as they are shown here, including the spaces (" "), and taking care to not confuse characters (such as "~" and "-").
 
 
 Finding the IP address of the Raspberry Pi

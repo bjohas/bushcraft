@@ -1,13 +1,13 @@
 #!/usr/bin/perl
 
 $logs = "/boot/logs";
-system "mkdir $logs" if !-e $logs;
+system "sudo mkdir $logs" if !-e $logs;
 $ip = `cat $logs/external_ip.txt`;
 if ($ip eq "" || $ARGV[0] eq "--update") {
     if (!-e $logs) {
 	mkdir($logs);
     };	
-    system "wget -q -O $logs/external_ip.txt http://icanhazip.com/";
+    system "sudo wget -q -O $logs/external_ip.txt http://icanhazip.com/";
     $ip = `cat $logs/external_ip.txt`;
 };
 $ip =~ s/\n//s;

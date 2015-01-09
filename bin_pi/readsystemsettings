@@ -10,18 +10,33 @@ if ($whoami ne "root") {
    system "sudo perl $0";
    exit;
 };
+($date = `date +'%Y%m%d_%H%M%S'`) =~ s/\n//;
 $cfg = "/boot/config";
 if (-e "/boot/bootcode.bin") {
     if (!-e $cfg) {
 	mkdir($cfg);
     } else {
-        if (-e "$cfg/hostname") {
-    	    system("cp","$cfg/hostname","/etc/hostname");
-	};	    
+	&twotime("$cfg/interfaces","/etc/network/interfaces");
+	&twotime("$cfg/hostname","/etc/hostname");
     };
 } else {
 	print "
 This script is meant for running on Raspberry Pi only.
 Exiting.
 ";
+};
+
+sub twotime {
+    ($a,$b) = ($_[0],$_[1]);
+    if (-e "$cfg/hostname") {
+	$aa = `cat "$a"`;
+	$bb = `cat "$b"`;
+	if ($aa ne $bb) {
+	    print "Applying new setting: $a -> $b\n";
+	    system("cp","$b","$a.$date");
+	    system("cp","$a","$b");
+	} else {
+	    print "Setting is up to date: $a == $b\n";
+	};
+    };
 };

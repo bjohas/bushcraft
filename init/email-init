@@ -37,11 +37,13 @@ if ($ARGV[0] eq "-m") {
     };
 };
 
-# Need to fetch config file.
+print "Updating installation.....\n";
+
 system "sudo apt-get update; 
 sudo apt-get install ssmtp
 sudo apt-get install mailutils";
 
+print "Writing config files ....\n";
 open F,">$lconf2";
 print F "
 root=postmaster

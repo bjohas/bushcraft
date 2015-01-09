@@ -14,6 +14,7 @@ if (-e "$conf/feedback.cfg") {
     close F;
     $serial = `$ENV{HOME}/bushcraft/bin_pi/serialnumber`;
     $ip = `ipaddress`;
+# @ARGV here is present to allow extra arguments to scrot
     system "scrot @ARGV -e 'sendfile $f'";
     print "Screenshot...\n";
 } else {

@@ -97,7 +97,7 @@ sshpi, vncpi to connect to the Pi, or screenpi to use the screen command to conn
 - bin_connect_to_headless_pi/sshpi
 - bin_connect_to_headless_pi/vncpi
 
-Also see 'Help on finding the IP address on a Raspberry Pi.md' for help with this. The 'firststart' command is also useful - of course, you only have that if you previously managed to connect to your Raspberry Pi, or if your installation came with bushcraft already (and firststart has been enabled). But if it has, the Raspberry Pi will speak its IP after boot, and you just need to connect a headset or speaker to figure out whether it got an IP address, and what it is.
+Also see 'Help on finding the IP address on a Raspberry Pi.md' for help with this. The 'firstrun' command is also useful - of course, you only have that if you previously managed to connect to your Raspberry Pi, or if your installation came with bushcraft already (and firstrun has been enabled). But if it has, the Raspberry Pi will speak its IP after boot, and you just need to connect a headset or speaker to figure out whether it got an IP address, and what it is.
 
 bin_pi
 ======
@@ -131,7 +131,7 @@ bin_pi_autorun
 The bin_pi_autorun directory contains commands that are useful mainly for automated execuation:
 
 - bin_pi_autorun/cron_commands
-- bin_pi_autorun/firststart
+- bin_pi_autorun/firstrun
 
 config
 ======
@@ -179,7 +179,7 @@ then "bushcraft-config <url>" is invoked. There after, bushcraft-init-pi runs th
 - init/email-init (uses email.cfg)
 - init/vnc-init-autostart (sets up vnc to start automatically after boot)
 - init/vnc-init-password (sets up a default password for vnc)
-- init/firststart-init-autostart (sets up firststart to run automatically after boot)
+- init/firststart-init-autostart (sets up firstrun to run automatically after boot)
 - init/write-sysinfo-init-autostart (set up sysinfo to run automatically after boot)
 
 To install education packages, use:

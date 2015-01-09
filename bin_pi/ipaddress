@@ -2,7 +2,7 @@
 
 $logs = "/boot/logs";
 system "sudo mkdir $logs" if !-e $logs;
-$ip = `cat $logs/external_ip.txt`;
+$ip = `cat $logs/external_ip.txt` if -e "$logs/external_ip.txt";
 if ($ip eq "" || $ARGV[0] eq "--update") {
     if (!-e $logs) {
 	mkdir($logs);

@@ -54,16 +54,17 @@ if ($ARGV[0] ne "-m") {
     while(readdir $dh) {
 	next if m/^(\.|\.\.)$/;
 	next if !-f "$ENV{HOME}/bushcraft/config/$_";
-	print "Considering $_\n";
-	system "wget -q -O $conf/temp.txt $url/$_";
-	if (-e "$conf/temp.txt" && !-z "$conf/temp.txt") {
+	print "Considering $url/$_\n";
+	$tempfile = "$conf/temp.txt";
+	system "wget -q -O \"$tempfile\" $url/$_";
+	if (-e "$tempfile" && !-z "$tempfile") {
 	    print "- Updating $_\n";
-	    system("mv","$conf/temp.txt","$conf/$_");
+	    system("mv","$tempfile","$conf/$_");
 	} else {
 	    print "- NOT UPDATING $_\n\n";
 	};
-	if (-e "$conf/temp.txt") {
-	    system("rm","$conf/temp.txt");
+	if (-e "$tempfile") {
+	    system("rm","$tempfile");
 	};
     };
     closedir $dh;

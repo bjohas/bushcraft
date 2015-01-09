@@ -1,7 +1,16 @@
 #!/usr/bin/perl
 
 $conf = "$ENV{HOME}/.config/bushcraft/";
-system "mkdir -p '$conf'";
+system "mkdir -p '$conf'" if !-d $conf;
+
+if (!-d $conf) {
+    print "Error
+$conf
+not found.
+";
+    exit;
+};
+
 chdir();
 
 if ($ARGV[0] eq "-h") {

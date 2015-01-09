@@ -28,7 +28,7 @@ Exiting.
 
 sub twotime {
     ($a,$b) = ($_[0],$_[1]);
-    if (-e "$cfg/hostname") {
+    if (-e "$a") {
 	$aa = `cat "$a"`;
 	$bb = `cat "$b"`;
 	if ($aa ne $bb) {

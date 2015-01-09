@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 $logs = "/boot/logs";
+system "mkdir $logs" if !-e $logs;
 $ip = `cat $logs/external_ip.txt`;
 if ($ip eq "" || $ARGV[0] eq "--update") {
     if (!-e $logs) {

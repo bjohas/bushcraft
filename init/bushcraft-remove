@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+print "
+
+Not complete removal yet ...
+
+";
+
+chdir("$ENV{HOME}/bushcraft/init");
+system "./cron-init off;
+./firststart-init-autostart
+";
+chdir("$ENV{HOME}");
+system("rm bush; 
+sudo rm /etc/ssmtp/ssmtp.conf;
+rm -r bushcraft .config/bushcraft .config/autostart/sysinfo.desktop");
+

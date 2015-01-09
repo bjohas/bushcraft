@@ -6,6 +6,7 @@
 $ldir = "$ENV{HOME}/.config/bushcraft/";
 
 $lconf = "$ldir/email.cfg";
+$lconf2 = "$ldir/ssmtp.conf";
 $conf = "/etc/ssmtp/ssmtp.conf";
 
 if (-e $conf && $ARGV[0] ne "--force") {
@@ -22,32 +23,26 @@ email config, or run this script with '--force':
 	exit;
 };
 
-
-
-if (!-e "$lconf" && $ARGV[0] eq "-m") {
-    system "mkdir -p '$ldir'";
-    system "cp '$ENV{HOME}/bushcraft/config/email.cfg' '$lconf'";
-    print "Please edit the email configuration!";
-    sleep 2;
-    system "nano '$lconf'";
-    system "chown pi '$lconf'";
-} else {
-
+if ($ARGV[0] eq "-m") {
+    print "Manual configuration\n";
+    if (!-e "$lconf") {
+	system "mkdir -p '$ldir'";
+	system "cp '$ENV{HOME}/bushcraft/config/email.cfg' '$lconf'";
+	print "Please edit the email configuration!";
+	sleep 5;
+	system "nano '$lconf'";
+	system "chown pi '$lconf'";
+    } else {
+	
+    };
 };
 
-($whoami = `whoami`) =~ s/\n//;
-
-if ($whoami ne "root") {
-   print "Running as root!";
-   system "sudo $0";
-   exit;
-};
 # Need to fetch config file.
 system "sudo apt-get update; 
 sudo apt-get install ssmtp
 sudo apt-get install mailutils";
 
-open F,">$conf";
+open F,">$lconf2";
 print F "
 root=postmaster
 mailhub=smtp.gmail.com:587
@@ -55,4 +50,17 @@ hostname=raspberrypi
 UseSTARTTLS=YES
 ";
 close F;
-system "cat '$lconf' >> $conf";
+system "cat '$lconf' >> '$lconf2'";
+
+system "sudo cp '$lconf2' '$conf'";
+
+if (-e $conf) {
+    print "SUCCESS
+$conf 
+was installed.
+";
+
+} else {
+    print "NOT SUCCESSFUL!!\n";
+
+};

@@ -5,7 +5,7 @@ A set of tools for remote support of linux computers, with some special bits for
 
 You install bushcraft by retrieving http://tiny.cc/bush, e.g.
 
-    curl tiny.cc/bush
+    curl -L -o bush tiny.cc/bush
 or
     wget --no-check-certificate -O bush tiny.cc/bush
     

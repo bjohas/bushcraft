@@ -15,6 +15,7 @@ If you are unsure whether you have wget or curl, open a terminal, and type
  curl
  
 You should see
+
  curl: try 'curl --help' or 'curl --manual' for more information
 
 To see whether you have wget, type
@@ -22,11 +23,13 @@ To see whether you have wget, type
  wget
 
 You should see
+
  wget: missing URL
 
 If you have wget or curl, you install bushcraft by retrieving http://tiny.cc/bush, e.g.
 
-    curl tiny.cc/bush
+      curl -L -o bush tiny.cc/bush
+
 or
 
      wget --no-check-certificate -O bush tiny.cc/bush

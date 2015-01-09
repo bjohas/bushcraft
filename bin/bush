@@ -37,7 +37,7 @@ if (-e "/boot/bootcode.bin") {
 	    system("./bushcraft/init/bushcraft-init-pi");
 	};
     } else {
-	if ($update == 1) {
+	if ($update != 1) {
 	    print "If you are on Raspberry Pi, now type
 
     ./bushcraft/init/bushcraft-init-pi

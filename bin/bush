@@ -31,6 +31,7 @@ if (-e "/boot/bootcode.bin") {
 	    };
 	};
 	if ($ARGV[0] eq "-i") {
+	    print "Installing requisites.\n";
 	    system("./bushcraft/init/bushcraft-init-pi");
 	};
     } else {

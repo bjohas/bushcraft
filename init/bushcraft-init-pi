@@ -19,7 +19,7 @@ if (-e "/boot/bootcode.bin") {
    foreach (@package) {
        if ($ARGV[0] eq "" || $ARGV[0] eq "-i") {
 	   print "\n\n******** $_ *********\n\n";
-	   system "$_";
+	   system "./$_";
        } else {
 	   print "\n\n******** $_ *********\n\n";
 	   print "To install '$_' type y and press ENTER\n";

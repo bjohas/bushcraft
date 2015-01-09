@@ -1,5 +1,5 @@
 #!/bin/sh
 # We should check there's internet. - add this in the future.
 sudo apt-get update
-sudo apt-get -y install openssh-server tightvncserver openvpn tmux curl wget ytalk screen minicom apt-zip apt-offline vncviewer festival acct procinfo scrot ssmtp mutt mailutils
+sudo apt-get -y install openssh-server tightvncserver openvpn tmux curl wget ytalk screen minicom apt-zip apt-offline vncviewer festival acct procinfo scrot ssmtp mutt mailutils jove
 # We should check that the packages managed to install... - add this in the future.

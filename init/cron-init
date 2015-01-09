@@ -12,6 +12,7 @@ if ($ARGV[0] eq "off" || $ARGV[0] eq "--off") {
     close F;
     system "$sudo crontab /tmp/crontmp; rm /tmp/crontmp";
 };
-print "*** CURRENT CRONTAB FOR root ***\n";
+print "*** CURRENT CRONTAB ***\n";
+print "*** FOR ROOT ***\n" if $sudo ne "";
 system "$sudo crontab -l";
 print "*** *** ***\n";

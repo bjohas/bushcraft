@@ -24,7 +24,7 @@ email config, or run this script with '--force':
 
 
 
-if (!-e "$lconf") {
+if (!-e "$lconf" && $ARGV[0] eq "-m") {
     system "mkdir -p '$ldir'";
     system "cp '$ENV{HOME}/bushcraft/config/email.cfg' '$lconf'";
     print "Please edit the email configuration!";
@@ -34,6 +34,8 @@ if (!-e "$lconf") {
 } else {
 
 };
+
+($whoami = `whoami`) =~ s/\n//;
 
 if ($whoami ne "root") {
    print "Running as root!";

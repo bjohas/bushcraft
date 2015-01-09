@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 
+$logs = "/boot/logs";
 $conf = "$ENV{HOME}/.config/bushcraft/";
 if (-e "$conf/feedback.cfg") {
     open F,"$conf/feedback.cfg";

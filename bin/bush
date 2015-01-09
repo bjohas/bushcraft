@@ -16,7 +16,9 @@ if (!-e "bushcraft") {
     print "bushcraft installation finished.\n";
   };
 } else {
-  system "cd bushcraft; git pull";
+    $update = 1;
+    system "cd bushcraft; git pull";
+    print "bushcraft update finished.\n";
 };
 chdir("$ENV{HOME}");
 if (-e "/boot/bootcode.bin") {
@@ -35,7 +37,8 @@ if (-e "/boot/bootcode.bin") {
 	    system("./bushcraft/init/bushcraft-init-pi");
 	};
     } else {
-	print "If you are on Raspberry Pi, now type
+	if ($update == 1) {
+	    print "If you are on Raspberry Pi, now type
 
     ./bushcraft/init/bushcraft-init-pi
 
@@ -56,6 +59,7 @@ to fetch these. You can also delete this file now:
     rm bush
 
 ";
+	};
     };
 };
 

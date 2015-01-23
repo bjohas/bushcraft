@@ -60,7 +60,7 @@ if ($ARGV[0] ne "-m") {
     
     chdir();
     opendir(my $dh, "$ENV{HOME}/bushcraft/config") || die;
-    while(readdir $dh) {
+    while (readdir $dh) {
 	print "x $_\n";
 	next if m/^(\.|\.\.)$/;
 	next if !-f "$ENV{HOME}/bushcraft/config/$_";

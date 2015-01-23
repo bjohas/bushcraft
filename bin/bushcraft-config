@@ -61,7 +61,7 @@ if ($ARGV[0] ne "-m") {
     chdir();
     opendir(my $dh, "$ENV{HOME}/bushcraft/config") || die;
     while(readdir $dh) {
-	print "$_\n";
+	print "x $_\n";
 	next if m/^(\.|\.\.)$/;
 	next if !-f "$ENV{HOME}/bushcraft/config/$_";
 	print "Considering $url/$_\n";
